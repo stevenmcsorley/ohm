@@ -15,14 +15,17 @@ services:
       - --log.level=DEBUG # Setting the log level
       - --providers.docker=true # Enabling Docker as the provider
       - --providers.docker.exposedbydefault=false # Don't expose every container to Traefik
+      - --providers.file.filename=/dynamic.yml # Using a file for dynamic configuration
+      - --entrypoints.docker.network=web
       - --entrypoints.web.address=:80 # Defining an entrypoint for port 80 named web
-      - --entrypoints.websecure.address=:443 # Defining an entrypoint for port 443 named websecure
-      - --certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web
-      - --certificatesresolvers.myresolver.acme.email=smcsorl@gmail.com
-      - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json
+      # - --entrypoints.websecure.address=:443 # Defining an entrypoint for port 443 named websecure
+      # - --certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web
+      # - --certificatesresolvers.myresolver.acme.email=smcsorl@gmail.com
+      # - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock # Volume for Docker admin
-      - ./letsencrypt:/letsencrypt # Volume for storing certificates
+      - ./dynamic.yml:/etc/docker/dynamic.yml # Volume for dynamic configuration
+      # - ./letsencrypt:/letsencrypt # Volume for storing certificates
     networks:
       - web
 
@@ -36,14 +39,15 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.web.rule=Host(`${HOST}`)" # Use your actual domain
-      - "traefik.http.routers.web.entrypoints=web"
-      - "traefik.http.routers.websecure.rule=Host(`${HOST}`)" # Use your actual domain
-      - "traefik.http.routers.websecure.entrypoints=websecure"
-      - "traefik.http.routers.websecure.tls=true"
-      - "traefik.http.routers.websecure.tls.certresolver=myresolver"
-      - "traefik.http.services.web.loadbalancer.server.port=8000" # Port where the app runs
+      traefik.enable: true
+      traefik.http.routers.web.rule: "Host(`${HOST}`)" # Use your actual domain
+      traefik.http.routers.web.entrypoints: web
+      traefik.http.routers.web.service: "web"
+      # - "traefik.http.routers.websecure.rule=Host(`${HOST}`)" # Use your actual domain
+      # - "traefik.http.routers.websecure.entrypoints=websecure"
+      # - "traefik.http.routers.websecure.tls=true"
+      # - "traefik.http.routers.websecure.tls.certresolver=myresolver"
+      traefik.http.services.web.loadbalancer.server.port: "8000" # Port where the app runs
     networks:
       - web
 
