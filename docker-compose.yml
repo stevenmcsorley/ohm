@@ -35,7 +35,7 @@ services:
       - CHOKIDAR_USEPOLLING=true
     labels:
       traefik.enable: true
-      traefik.http.routers.web.rule: "Host(`ohmdesign.co.uk`)" # Use your actual domain
+      traefik.http.routers.web.rule: "Host(`stevenmcsorley.co.uk`)" # Use your actual domain
       traefik.http.routers.web.entrypoints: web
       traefik.http.routers.web.service: web
       traefik.http.services.web.loadbalancer.server.port: "8000" # Port where the app runs
