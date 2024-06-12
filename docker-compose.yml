@@ -16,7 +16,7 @@ services:
       - --providers.docker=true # Enabling Docker as the provider
       - --providers.docker.exposedbydefault=false # Don't expose every container to Traefik
       - --providers.file.filename=/dynamic.yml # Using a file for dynamic configuration
-      - --entrypoints.docker.network=web
+      - --providers.docker.network=web
       - --entrypoints.web.address=:80 # Defining an entrypoint for port 80 named web
       # - --entrypoints.websecure.address=:443 # Defining an entrypoint for port 443 named websecure
       # - --certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web
