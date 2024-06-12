@@ -8,7 +8,7 @@ services:
     ports:
       - "8082:80" # HTTP
       - "8080:8080" # Dashboard
-      - "8443:443" # HTTPS
+      - "8444:443" # HTTPS
     command:
       - --api.insecure=true # Enabling insecure API, NOT RECOMMENDED FOR PRODUCTION
       - --api.dashboard=true # Enabling the dashboard
