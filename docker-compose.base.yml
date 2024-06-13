@@ -2,30 +2,29 @@ version: "3.9"
 
 services:
   traefik:
-    image: traefik:v2.8.1
-    restart: always
-    container_name: traefik
+    image: traefik:v2.8
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.file.directory=/configurations"
+      - "--providers.file.watch=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.dnsChallenge.acme.dnsChallenge.provider=cloudflare"
+      - "--certificatesresolvers.dnsChallenge.acme.email=smcsorl@gmail.com"
+      - "--certificatesresolvers.dnsChallenge.acme.storage=/acme.json"
+      - "--serversTransport.insecureSkipVerify=true"
     ports:
       - "80:80"
       - "443:443"
-      - "8087:8080"
-    command:
-      - --api.insecure=true
-      - --api.dashboard=true
-      - --log.level=DEBUG
-      - --providers.docker=true
-      - --providers.docker.exposedbydefault=false
-      - --providers.file.filename=/dynamic.yml
-      - --providers.docker.network=proxy
-      - --entrypoints.web.address=:80
-      - --entrypoints.websecure.address=:443
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik/traefik-conf.yml:/etc/traefik/traefik.yml
       - ./dynamic.yml:/dynamic.yml
+      - ./acme.json:/acme.json
     networks:
       - proxy
 
 networks:
   proxy:
-    name: "proxy"
+    external: true

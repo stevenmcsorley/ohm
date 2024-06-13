@@ -29,7 +29,8 @@ services:
       - "traefik.http.routers.backend.rule=Host(`backend.stevenmcsorley.co.uk`)"
       - "traefik.http.routers.backend.entrypoints=websecure"
       - "traefik.http.routers.backend.tls=true"
-      - "traefik.http.routers.backend.middlewares=websocket"
+      - "traefik.http.routers.backend.middlewares=websocket@file"
+      - "traefik.http.routers.backend.tls.certresolver=dnsChallenge"
       - "traefik.http.services.backend.loadbalancer.server.port=8080"
 
   prometheus:
@@ -40,7 +41,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.prometheus.rule=Host(`prometheus.stevenmcsorley.co.uk`)"
       - "traefik.http.routers.prometheus.entrypoints=websecure"
-      - "traefik.http.routers.prometheus.tls.certresolver=default"
+      - "traefik.http.routers.prometheus.tls.certresolver=dnsChallenge"
       - "traefik.http.services.prometheus.loadbalancer.server.port=9090"
 
   grafana:
@@ -53,7 +54,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.grafana.rule=Host(`grafana.stevenmcsorley.co.uk`)"
       - "traefik.http.routers.grafana.entrypoints=websecure"
-      - "traefik.http.routers.grafana.tls.certresolver=default"
+      - "traefik.http.routers.grafana.tls.certresolver=dnsChallenge"
       - "traefik.http.services.grafana.loadbalancer.server.port=3000"
 
 networks:
