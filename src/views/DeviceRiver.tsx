@@ -16,7 +16,7 @@ function DeviceRiver() {
   const connectWebSocket = () => {
     const protocol = window.location.protocol === "https:" ? "wss" : "ws";
     const socket = new WebSocket(
-      `${protocol}://${window.location.hostname}/ws`
+      `${protocol}://backend.stevenmcsorley.co.uk/ws`
     );
 
     socket.addEventListener("open", () => {
