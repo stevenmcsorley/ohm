@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   traefik:
-    image: traefik:v2.8
+    image: traefik:v2.7.1
     command:
       - --api.insecure=true # <== Enabling insecure api, NOT RECOMMENDED FOR PRODUCTION
       - --api.dashboard=true # <== Enabling the dashboard to view services, middlewares, routers, etc.
