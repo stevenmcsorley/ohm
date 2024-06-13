@@ -18,6 +18,7 @@ services:
       - --providers.file.filename=/dynamic.yml # Using a file for dynamic configuration
       - --providers.docker.network=proxy # Use the 'proxy' network
       - --entrypoints.web.address=:80 # Defining an entrypoint for port 80 named web
+      - --entrypoints.websecure.address=:443 # Defining an entrypoint for port 443 named websecure
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock # Volume for Docker admin
       - ./dynamic.yml:/dynamic.yml # Volume for dynamic configuration
@@ -34,11 +35,12 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
     labels:
-      traefik.enable: true
-      traefik.http.routers.web.rule: "Host(`stevenmcsorley.co.uk`)" # Use your actual domain
-      traefik.http.routers.web.entrypoints: web
-      traefik.http.routers.web.service: web
-      traefik.http.services.web.loadbalancer.server.port: "8000" # Port where the app runs
+      - "traefik.enable=true"
+      - "traefik.http.routers.web.rule=Host(`stevenmcsorley.co.uk`)" # Use your actual domain
+      - "traefik.http.routers.web.entrypoints=web"
+      - "traefik.http.routers.websecure.entrypoints=websecure"
+      - "traefik.http.routers.websecure.tls=true"
+      - "traefik.http.services.web.loadbalancer.server.port=8000" # Port where the app runs
     networks:
       - proxy
 
