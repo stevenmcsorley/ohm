@@ -3,13 +3,3 @@ http:
     redirect:
       redirectScheme:
         scheme: https
-
-    websocket:
-      headers:
-        customRequestHeaders:
-          X-Forwarded-Proto: https
-          X-Forwarded-Host: backend.stevenmcsorley.co.uk
-        customResponseHeaders:
-          Access-Control-Allow-Origin: "*"
-          Access-Control-Allow-Methods: "GET, OPTIONS, PUT, POST, DELETE"
-          Access-Control-Allow-Headers: "Origin, X-Requested-With, Content-Type, Accept, Authorization"
