@@ -42,10 +42,12 @@ function DeviceRiver() {
       }
     });
 
-    socket.addEventListener("close", () => {
-      console.log("Disconnected from WS Server");
-      // Attempt to reconnect after a delay
-      setTimeout(connectWebSocket, 5000);
+    socket.addEventListener("close", (event) => {
+      console.log("Disconnected from WS Server", event);
+      // Attempt to reconnect after a delay if not closed cleanly
+      if (!event.wasClean) {
+        setTimeout(connectWebSocket, 5000);
+      }
     });
 
     socket.addEventListener("error", (error) => {

@@ -8,3 +8,12 @@ http:
         customRequestHeaders:
           X-Forwarded-Proto: "https"
           X-Forwarded-Host: "backend.stevenmcsorley.co.uk"
+  routers:
+    backend:
+      rule: "Host(`backend.stevenmcsorley.co.uk`)"
+      entryPoints:
+        - websecure
+      service: backend
+      middlewares:
+        - websocket
+      tls: {}
