@@ -26,10 +26,14 @@ wss.on("connection", (ws) => {
   ws.on("close", () => {
     console.log("Client disconnected");
   });
+
+  ws.on("error", (error) => {
+    console.error("WebSocket error:", error);
+  });
 });
 
 wss.on("error", (error) => {
-  console.error("WebSocket error:", error);
+  console.error("WebSocket server error:", error);
 });
 
 subscriber.on("error", (err) => {
