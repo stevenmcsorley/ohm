@@ -3,3 +3,9 @@ http:
     redirect:
       redirectScheme:
         scheme: https
+
+    websocket:
+      headers:
+        customRequestHeaders:
+          X-Forwarded-Proto: https
+          X-Forwarded-Host: backend.stevenmcsorley.co.uk
