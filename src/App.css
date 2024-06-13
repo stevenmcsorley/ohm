@@ -9,6 +9,11 @@ html {
   max-width: 100%;
 }
 
+.square_root {
+  vertical-align: 60%;
+  font-size: 1.5rem;
+}
+
 #root {
   display: flex;
   flex-direction: column;

@@ -1,8 +1,14 @@
+import "./Hero.css";
+
 const Hero = () => {
   return (
-    <div>
-      <h1>Hero</h1>
-      <p>Some text</p>
+    <div className="hero-container">
+      <div className="hero-content">
+        <h1 className="hero-title">Welcome to My Creative Space</h1>
+        <p className="hero-text">
+          Dive into a collection of my homegrown projects.
+        </p>
+      </div>
     </div>
   );
 };

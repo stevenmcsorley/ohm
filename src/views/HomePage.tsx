@@ -31,6 +31,30 @@ const HomePage = () => {
           imageUrl="https://picsum.photos/200/300?random=4"
           link="#"
         />
+        <ProfileCard
+          title="Project Five"
+          description="This is a brief description of Project Five."
+          imageUrl="https://picsum.photos/200/300?random=5"
+          link="#"
+        />
+        <ProfileCard
+          title="Project Four"
+          description="This is a brief description of Project Six."
+          imageUrl="https://picsum.photos/200/300?random=6"
+          link="#"
+        />
+        <ProfileCard
+          title="Project Four"
+          description="This is a brief description of Project Seven."
+          imageUrl="https://picsum.photos/200/300?random=7"
+          link="#"
+        />
+        <ProfileCard
+          title="Project Four"
+          description="This is a brief description of Project Eight."
+          imageUrl="https://picsum.photos/200/300?random=8"
+          link="#"
+        />
       </div>
     </main>
   );

@@ -6,7 +6,7 @@ services:
     restart: always
     container_name: traefik
     ports:
-      - "80:80" # HTTP
+      - "8082:80" # HTTP
       - "8080:8080" # Dashboard
       - "8444:443" # HTTPS
     command:
