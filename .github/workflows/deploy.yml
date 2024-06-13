@@ -47,5 +47,7 @@ jobs:
           script: |
             cd ${{ secrets.VPS_PATH }}
             git pull origin main
-            docker-compose down
-            docker-compose up --build -d
+            docker-compose -f docker-compose.base.yml -f docker-compose.main.yml -f docker-compose.deviceriver.yml down
+            docker-compose -f docker-compose.base.yml -f docker-compose.main.yml -f docker-compose.deviceriver.yml pull
+            docker-compose -f docker-compose.base.yml -f docker-compose.main.yml -f docker-compose.deviceriver.yml up --build -d
+            docker system prune -f
