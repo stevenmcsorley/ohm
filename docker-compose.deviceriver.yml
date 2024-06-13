@@ -29,10 +29,10 @@ services:
       - "traefik.http.routers.backend.rule=Host(`backend.stevenmcsorley.co.uk`)"
       - "traefik.http.routers.backend.entrypoints=websecure"
       - "traefik.http.routers.backend.tls=true"
-      - "traefik.http.services.backend.loadbalancer.server.port=8080"
       - "traefik.http.middlewares.websocket.headers.customrequestheaders.X-Forwarded-Proto=https"
       - "traefik.http.middlewares.websocket.headers.customrequestheaders.X-Forwarded-Host=backend.stevenmcsorley.co.uk"
       - "traefik.http.routers.backend.middlewares=websocket"
+      - "traefik.http.services.backend.loadbalancer.server.port=8080"
 
   prometheus:
     image: prom/prometheus:v2.26.0
