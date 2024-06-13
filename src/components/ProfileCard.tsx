@@ -1,6 +1,18 @@
 import "./ProfileCard.css";
 
-const ProfileCard = ({ title, description, imageUrl, link }) => {
+interface ProfileCardProps {
+  title: string;
+  description: string;
+  imageUrl: string;
+  link: string;
+}
+
+const ProfileCard = ({
+  title,
+  description,
+  imageUrl,
+  link,
+}: ProfileCardProps) => {
   return (
     <div className="profile-card">
       <img src={imageUrl} alt={title} className="profile-card-image" />
