@@ -1,0 +1,61 @@
+version: "3.9"
+
+services:
+  redis-server:
+    image: redis:7.2.5
+    networks:
+      - proxy
+
+  redis-exporter:
+    image: oliver006/redis_exporter:v1.61.0
+    networks:
+      - proxy
+
+  device-simulator:
+    build:
+      context: ./device-simulator
+    networks:
+      - proxy
+
+  backend-server:
+    build:
+      context: ./backend
+    ports:
+      - "8081:8080"
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=Host(`backend.stevenmcsorley.co.uk`)"
+      - "traefik.http.routers.backend.entrypoints=web"
+      - "traefik.http.routers.websecure.entrypoints=websecure"
+      - "traefik.http.routers.websecure.tls=true"
+      - "traefik.http.services.backend.loadbalancer.server.port=8080"
+
+  prometheus:
+    image: prom/prometheus:v2.26.0
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.prometheus.rule=Host(`prometheus.stevenmcsorley.co.uk`)"
+      - "traefik.http.routers.prometheus.entrypoints=websecure"
+      - "traefik.http.routers.prometheus.tls.certresolver=default"
+      - "traefik.http.services.prometheus.loadbalancer.server.port=9090"
+
+  grafana:
+    image: grafana/grafana:7.5.7
+    ports:
+      - "3002:3000"
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grafana.rule=Host(`grafana.stevenmcsorley.co.uk`)"
+      - "traefik.http.routers.grafana.entrypoints=websecure"
+      - "traefik.http.routers.grafana.tls.certresolver=default"
+      - "traefik.http.services.grafana.loadbalancer.server.port=3000"
+
+networks:
+  proxy:
+    external: true
