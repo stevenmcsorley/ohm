@@ -25,24 +25,22 @@ services:
     networks:
       - proxy
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=Host(`backend.stevenmcsorley.co.uk`)"
-      - "traefik.http.routers.backend.entrypoints=websecure"
-      - "traefik.http.routers.backend.tls=true"
-      - "traefik.http.routers.backend.middlewares=websocket@file"
-      - "traefik.http.routers.backend.tls.certresolver=dnsChallenge"
-      - "traefik.http.services.backend.loadbalancer.server.port=8080"
+      traefik.enable: true
+      traefik.http.routers.backend.rule: "Host(`backend.stevenmcsorley.co.uk`)"
+      traefik.http.routers.backend.entrypoints: "web"
+      traefik.http.routers.backend.service: "backend"
+      traefik.http.services.backend.loadbalancer.server.port: "3001"
 
   prometheus:
     image: prom/prometheus:v2.26.0
     networks:
       - proxy
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.prometheus.rule=Host(`prometheus.stevenmcsorley.co.uk`)"
-      - "traefik.http.routers.prometheus.entrypoints=websecure"
-      - "traefik.http.routers.prometheus.tls.certresolver=dnsChallenge"
-      - "traefik.http.services.prometheus.loadbalancer.server.port=9090"
+      traefik.enable: true
+      traefik.http.routers.prometheus.rule: "Host(`prometheus.stevenmcsorley.co.uk`)"
+      traefik.http.routers.prometheus.entrypoints: "web"
+      traefik.http.routers.prometheus.service: "backend"
+      traefik.http.services.prometheus.loadbalancer.server.port: "9090"
 
   grafana:
     image: grafana/grafana:7.5.7
@@ -51,11 +49,11 @@ services:
     networks:
       - proxy
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.grafana.rule=Host(`grafana.stevenmcsorley.co.uk`)"
-      - "traefik.http.routers.grafana.entrypoints=websecure"
-      - "traefik.http.routers.grafana.tls.certresolver=dnsChallenge"
-      - "traefik.http.services.grafana.loadbalancer.server.port=3000"
+      traefik.enable: true
+      traefik.http.routers.grafana.rule: "Host(`grafana.stevenmcsorley.co.uk`)"
+      traefik.http.routers.grafana.entrypoints: "web"
+      traefik.http.routers.grafana.service: "backend"
+      traefik.http.services.grafana.loadbalancer.server.port: "3000"
 
 networks:
   proxy:

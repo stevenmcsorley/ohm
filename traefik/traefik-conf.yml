@@ -1,3 +1,4 @@
+---
 api:
   dashboard: true
   debug: true
@@ -7,11 +8,9 @@ serversTransport:
 
 entryPoints:
   web:
-    address: ":80"
+    address: "80"
   websecure:
-    address: ":443"
-  websocket:
-    address: ":8000"
+    address: "443"
 
 providers:
   docker:
@@ -22,7 +21,6 @@ providers:
   file:
     directory: /configurations/
     watch: true
-
 certificatesResolvers:
   dnsChallenge:
     acme:

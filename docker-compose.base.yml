@@ -4,16 +4,14 @@ services:
   traefik:
     image: traefik:v2.8
     command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.file.directory=/configurations"
-      - "--providers.file.watch=true"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
-      - "--certificatesresolvers.dnsChallenge.acme.dnsChallenge.provider=cloudflare"
-      - "--certificatesresolvers.dnsChallenge.acme.email=smcsorl@gmail.com"
-      - "--certificatesresolvers.dnsChallenge.acme.storage=/acme.json"
-      - "--serversTransport.insecureSkipVerify=true"
+      - --api.insecure=true # <== Enabling insecure api, NOT RECOMMENDED FOR PRODUCTION
+      - --api.dashboard=true # <== Enabling the dashboard to view services, middlewares, routers, etc.
+      - --api.debug=true # <== Enabling additional endpoints for debugging and profiling
+      - --log.level=DEBUG # <== Setting the level of the logs from traefik
+      - --providers.docker=true # <== Enabling docker as the provider for traefik
+      - --providers.docker.exposedbydefault=false # <== Don't expose every container to traefik
+      - --providers.file.filename=/dynamic.yaml # <== Referring to a dynamic configuration file
+      - --providers.docker.network=proxy # <== Operate on the docker network named web
     ports:
       - "80:80"
       - "443:443"
@@ -25,7 +23,10 @@ services:
       - ./configurations:/configurations
     networks:
       - proxy
-
+    labels:
+      - "traefik.enable=true" # <== Enable traefik on itself to view dashboard and assign subdomain to$
+      - "traefik.http.routers.api.rule=Host(`monitor.stevenmcsorley.co.uk`)" # <== Setting the domain for the d$
+      - "traefik.http.routers.api.service=api@internal" # <== Enabling the api to be a service to acce$
 networks:
   proxy:
     external: true

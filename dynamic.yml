@@ -1,8 +1,5 @@
 http:
   middlewares:
-    websocket:
-      headers:
-        customRequestHeaders:
-          X-Forwarded-Proto: https
-        customResponseHeaders:
-          Access-Control-Allow-Origin: "*"
+    redirect:
+      redirectScheme:
+        scheme: https

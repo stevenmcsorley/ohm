@@ -11,14 +11,12 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.web.rule=Host(`stevenmcsorley.co.uk`)"
-      - "traefik.http.routers.web.entrypoints=websecure"
-      - "traefik.http.routers.web.tls=true"
-      - "traefik.http.services.web.loadbalancer.server.port=8000"
-      - "traefik.http.routers.web-ws.rule=Host(`stevenmcsorley.co.uk`) && Path(`/ws`)"
-      - "traefik.http.routers.web-ws.entrypoints=websecure"
-      - "traefik.http.services.web-ws.loadbalancer.server.port=8000"
+      traefik.enable: true
+      traefik.http.routers.web-main.rule: "Host(`stevenmcsorley.co.uk`)"
+      traefik.http.routers.web-main.entrypoints: web
+      traefik.http.routers.web-main.service: "web-main"
+      traefik.http.services.web-main.loadbalancer.server.port: "8000"
+
     networks:
       - proxy
 
