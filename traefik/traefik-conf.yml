@@ -8,9 +8,9 @@ serversTransport:
 
 entryPoints:
   web:
-    address: "8082"
+    address: ":80"
   websecure:
-    address: "8444"
+    address: ":443"
 
 providers:
   docker:
@@ -21,6 +21,7 @@ providers:
   file:
     directory: /configurations/
     watch: true
+
 certificatesResolvers:
   dnsChallenge:
     acme:
