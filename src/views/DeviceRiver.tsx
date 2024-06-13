@@ -14,12 +14,12 @@ function DeviceRiver() {
   const [ws, setWs] = useState<WebSocket | null>(null);
 
   const connectWebSocket = () => {
-    const protocol = window.location.protocol === "https:" ? "wss" : "ws";
-    const host =
-      window.location.hostname === "localhost"
-        ? "backend.localhost"
-        : "backend.stevenmcsorley.co.uk";
-    const socket = new WebSocket(`${protocol}://${host}/ws`);
+    // const protocol = window.location.protocol === "https:" ? "wss" : "ws";
+    // const host =
+    //   window.location.hostname === "localhost"
+    //     ? "backend.localhost"
+    //     : "backend.stevenmcsorley.co.uk";
+    const socket = new WebSocket(`wss://backend.stevenmcsorley.co.uk:8000/ws`);
 
     socket.addEventListener("open", () => {
       console.log("Connected to WS Server");
