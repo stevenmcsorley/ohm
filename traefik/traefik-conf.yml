@@ -8,9 +8,9 @@ serversTransport:
 
 entryPoints:
   web:
-    address: "80"
+    address: "8082"
   websecure:
-    address: "8443"
+    address: "8444"
 
 providers:
   docker:
