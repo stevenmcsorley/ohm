@@ -39,7 +39,7 @@ services:
       traefik.enable: true
       traefik.http.routers.prometheus.rule: "Host(`prometheus.stevenmcsorley.co.uk`)"
       traefik.http.routers.prometheus.entrypoints: "web"
-      traefik.http.routers.prometheus.service: "backend"
+      traefik.http.routers.prometheus.service: "prometheus"
       traefik.http.services.prometheus.loadbalancer.server.port: "9090"
 
   grafana:
@@ -52,7 +52,7 @@ services:
       traefik.enable: true
       traefik.http.routers.grafana.rule: "Host(`grafana.stevenmcsorley.co.uk`)"
       traefik.http.routers.grafana.entrypoints: "web"
-      traefik.http.routers.grafana.service: "backend"
+      traefik.http.routers.grafana.service: "grafana"
       traefik.http.services.grafana.loadbalancer.server.port: "3000"
 
 networks:
