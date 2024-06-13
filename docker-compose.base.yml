@@ -20,8 +20,9 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik/traefik-conf.yml:/etc/traefik/traefik.yml
-      - ./traefik/configurations:/configurations
+      - ./dynamic.yml:/dynamic.yml
       - ./acme.json:/acme.json
+      - ./configurations:/configurations
     networks:
       - proxy
 

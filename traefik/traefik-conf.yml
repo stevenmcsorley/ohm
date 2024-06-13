@@ -1,4 +1,3 @@
----
 api:
   dashboard: true
   debug: true

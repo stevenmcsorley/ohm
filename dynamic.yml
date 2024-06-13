@@ -1,0 +1,11 @@
+http:
+  middlewares:
+    websocket:
+      headers:
+        customRequestHeaders:
+          X-Forwarded-Host: "backend.stevenmcsorley.co.uk"
+          X-Forwarded-Proto: "https"
+        customResponseHeaders:
+          Access-Control-Allow-Headers: "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+          Access-Control-Allow-Methods: "GET, OPTIONS, PUT, POST, DELETE"
+          Access-Control-Allow-Origin: "*"
