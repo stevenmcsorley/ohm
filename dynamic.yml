@@ -13,13 +13,3 @@ http:
           Access-Control-Allow-Origin: "*"
           Access-Control-Allow-Methods: "GET, OPTIONS, PUT, POST, DELETE"
           Access-Control-Allow-Headers: "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-
-  routers:
-    backend:
-      rule: "Host(`backend.stevenmcsorley.co.uk`)"
-      entryPoints:
-        - websecure
-      service: backend
-      middlewares:
-        - websocket
-      tls: {}
