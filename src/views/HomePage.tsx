@@ -38,19 +38,19 @@ const HomePage = () => {
           link="#"
         />
         <ProfileCard
-          title="Project Four"
+          title="Project Six"
           description="This is a brief description of Project Six."
           imageUrl="https://picsum.photos/200/300?random=6"
           link="#"
         />
         <ProfileCard
-          title="Project Four"
+          title="Project Seven"
           description="This is a brief description of Project Seven."
           imageUrl="https://picsum.photos/200/300?random=7"
           link="#"
         />
         <ProfileCard
-          title="Project Four"
+          title="Project Eight"
           description="This is a brief description of Project Eight."
           imageUrl="https://picsum.photos/200/300?random=8"
           link="#"
