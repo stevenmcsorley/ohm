@@ -48,3 +48,9 @@
 .profile-card-link:hover {
   background-color: #e73370;
 }
+
+.profile-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
