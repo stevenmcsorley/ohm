@@ -14,7 +14,8 @@ function DeviceRiver() {
   const [ws, setWs] = useState<WebSocket | null>(null);
 
   const connectWebSocket = () => {
-    const socket = new WebSocket("ws://backend.localhost/ws");
+    const protocol = window.location.protocol === "https:" ? "wss" : "ws";
+    const socket = new WebSocket(`${protocol}://backend.localhost/ws`);
 
     socket.addEventListener("open", () => {
       console.log("Connected to WS Server");
