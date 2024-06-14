@@ -22,12 +22,12 @@ const Header = () => {
             <li>
               <Link to="/contact">Contact</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/privacy-policy">Privacy Policy</Link>
             </li>
             <li>
               <Link to="/terms-of-service">Terms of Service</Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>
