@@ -14,7 +14,7 @@ const HomePage = () => {
           link="/device-river"
         />
         <ProfileCard
-          title="Project Two"
+          title="Project 2"
           description="This is a brief description of Project Two."
           imageUrl="https://picsum.photos/200/300?random=2"
           link="#"

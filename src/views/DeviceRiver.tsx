@@ -146,7 +146,7 @@ function DeviceRiver() {
   return (
     <div className="DeviceRiver">
       <header className="DeviceRiver-header">
-        <h1>Device Data Stream</h1>
+        <h1>Device Data Stream!</h1>
         {deviceData && Object.keys(deviceData).length === 0 ? (
           <p className="loading-message">Loading data...</p>
         ) : (
