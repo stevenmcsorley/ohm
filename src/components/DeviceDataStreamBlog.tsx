@@ -64,14 +64,14 @@ const DeviceDataStreamBlog = () => {
 
       <h2>Motivation for Testing Redis Pub/Sub</h2>
       <p>
-        Prior to experimenting with Redis Pub/Sub, we had utilized GraphQL
+        Prior to experimenting with Redis Pub/Sub, I had utilized GraphQL
         subscriptions for real-time data updates. While GraphQL subscriptions
-        offer a robust way to handle real-time data, we wanted to evaluate Redis
+        offer a robust way to handle real-time data, I wanted to evaluate Redis
         for several reasons:
       </p>
       <ul>
         <li>
-          <strong>Efficiency</strong>: We aimed to see if Redis could handle
+          <strong>Efficiency</strong>: I aimed to see if Redis could handle
           high-frequency data updates more efficiently.
         </li>
         <li>
