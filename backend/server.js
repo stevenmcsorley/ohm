@@ -42,7 +42,6 @@ subscriber
     console.log("Connected to Redis successfully.");
 
     subscriber.subscribe("device-updates", (message) => {
-      console.log(`Batch message: ${message}`);
       wss.clients.forEach((client) => {
         if (client.readyState === WebSocket.OPEN) {
           client.send(message);
