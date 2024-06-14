@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import "./DeviceRiver.css";
+import DeviceDataStreamBlog from "../components/DeviceDataStreamBlog";
 
 Chart.register(ArcElement, Tooltip, Legend);
 
@@ -137,7 +138,7 @@ function DeviceRiver() {
   return (
     <div className="DeviceRiver">
       <header className="DeviceRiver-header">
-        <h1>Device Data Streaming</h1>
+        {Object.keys(deviceData).length === 0 && <h1>Loading live data</h1>}
         <div className="grid-container">
           {Object.entries(deviceData).map(([deviceId, data]) => {
             return (
@@ -156,6 +157,7 @@ function DeviceRiver() {
             );
           })}
         </div>
+        <DeviceDataStreamBlog />
       </header>
     </div>
   );

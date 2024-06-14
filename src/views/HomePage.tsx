@@ -1,17 +1,15 @@
-import Header from "../components/Header";
 import Hero from "../components/Hero";
 import ProfileCard from "../components/ProfileCard";
 const HomePage = () => {
   return (
     <main>
-      <Header />
       <Hero />
       <div className="profile-cards-container">
         <ProfileCard
-          title="Device Data Stream"
-          description="Streaming Data using Reddis and Websockets."
+          title="Live IoT Data Streaming Using Redis and WebSockets"
+          description="Exploring the implementation of real-time data streaming for IoT devices using Redis and WebSockets to deliver instantaneous updates."
           imageUrl="https://picsum.photos/200/300?random=1"
-          link="/device-river"
+          link="/live-iot-data-streaming"
         />
         <ProfileCard
           title="Project 2"

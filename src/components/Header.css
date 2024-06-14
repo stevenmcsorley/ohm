@@ -1,0 +1,77 @@
+.header_background {
+  background-color: #030107;
+  color: white;
+  min-height: 100px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: rgb(99, 99, 99) 1px solid;
+}
+
+.neonText,
+.square_root {
+  font-family: "Bellota", system-ui;
+  font-weight: 400;
+  font-size: 3rem;
+  padding: 1rem 0;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00ff,
+    /* Pink glow */ 0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff,
+    0 0 35px #ff00ff;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00ff, 0 0 20px #ff00ff,
+      0 0 25px #ff00ff, 0 0 30px #ff00ff, 0 0 35px #ff00ff;
+  }
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
+}
+
+.square_root {
+  position: absolute;
+  font-size: 1rem;
+}
+
+/* Navigation styling */
+.nav {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav ul li {
+  display: inline;
+}
+
+.nav ul li a {
+  color: #e5e5e5;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.nav ul li a:hover {
+  border-bottom: 1px solid #ff00ff;
+}

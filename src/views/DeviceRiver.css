@@ -1,9 +1,10 @@
-/* DeviceRiver.css */
-
 .DeviceRiver {
   text-align: center;
   padding: 20px;
   background-color: #1c1c1c;
+  max-width: 1200px;
+  position: relative;
+  margin: 0 auto;
 }
 
 .DeviceRiver-header {
@@ -11,10 +12,10 @@
 }
 
 .grid-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
   gap: 20px;
+  justify-content: center;
 }
 
 .device-card {
@@ -29,10 +30,6 @@
   position: relative;
   border: 12px solid black;
   background-color: white;
-}
-
-.device-card:hover {
-  transform: translateY(-10px);
 }
 
 .device-info {
@@ -69,7 +66,7 @@
   width: 100%;
   height: 100%;
   background: rgba(5, 155, 255, 0.568); /* Orange color with transparency */
-  /* blue gradient transaprenet like a navy guage */
+  /* blue gradient transparent like a navy gauge */
   background: linear-gradient(
     180deg,
     rgba(5, 155, 255, 0.668) 0%,
@@ -95,4 +92,11 @@
   font-weight: bold;
   text-align: center;
   margin-top: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
 }
