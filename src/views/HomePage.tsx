@@ -1,8 +1,27 @@
 import Hero from "../components/Hero";
+import { Helmet } from "react-helmet-async";
 import ProfileCard from "../components/ProfileCard";
 const HomePage = () => {
   return (
     <main>
+      <Helmet>
+        <title>Steven McSorley | Home</title>
+        <meta
+          name="description"
+          content="Welcome to Steven McSorley's portfolio. Explore my projects and get to know me."
+        />
+        <meta property="og:title" content="Steven McSorley | Home" />
+        <meta
+          property="og:description"
+          content="Welcome to Steven McSorley's portfolio. Explore my projects and get to know me."
+        />
+        <meta
+          property="og:image"
+          content="https://picsum.photos/200/300?random=2"
+        />
+        <meta property="og:url" content="https://stevenmcsorley.co.uk" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <Hero />
       <div className="profile-cards-container">
         <ProfileCard

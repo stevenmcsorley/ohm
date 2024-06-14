@@ -1,7 +1,16 @@
 import { Link } from "react-router-dom";
+import ReactGA from "react-ga4";
 import "./Header.css";
 
 const Header = () => {
+  const handleNavClick = (label: string) => {
+    ReactGA.event({
+      category: "Navigation",
+      action: "Click",
+      label: label,
+    });
+  };
+
   return (
     <header>
       <div className="header_background">
@@ -11,22 +20,30 @@ const Header = () => {
         <nav className="nav">
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={() => handleNavClick("Home")}>
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/about" onClick={() => handleNavClick("About")}>
+                About
+              </Link>
             </li>
             <li>
-              <Link to="/projects">Projects</Link>
+              <Link to="/projects" onClick={() => handleNavClick("Projects")}>
+                Projects
+              </Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/contact" onClick={() => handleNavClick("Contact")}>
+                Contact
+              </Link>
             </li>
             {/* <li>
-              <Link to="/privacy-policy">Privacy Policy</Link>
+              <Link to="/privacy-policy" onClick={() => handleNavClick('Privacy Policy')}>Privacy Policy</Link>
             </li>
             <li>
-              <Link to="/terms-of-service">Terms of Service</Link>
+              <Link to="/terms-of-service" onClick={() => handleNavClick('Terms of Service')}>Terms of Service</Link>
             </li> */}
           </ul>
         </nav>
