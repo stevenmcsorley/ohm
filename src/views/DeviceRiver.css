@@ -88,3 +88,11 @@
   font-weight: bold;
   color: #000;
 }
+
+.loading-message {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}

@@ -147,27 +147,31 @@ function DeviceRiver() {
     <div className="DeviceRiver">
       <header className="DeviceRiver-header">
         <h1>Device Data Stream</h1>
-        <div className="grid-container">
-          {Object.entries(deviceData).map(([deviceId, data]) => {
-            return (
-              <div className="device-card" key={deviceId}>
-                {/* <h2>{deviceId}</h2> */}
-                <div className="device-info">
-                  <Doughnut
-                    className="doughnut-chart"
-                    data={createChartData(data.value)}
-                    options={options}
-                  />
-                  <div>
-                    {/* Timestamp: {new Date(data.timestamp).toLocaleString()} */}
-                    {/* <br /> */}
-                    <span className="guage_value">{data.value} kWh</span>
+        {deviceData && Object.keys(deviceData).length === 0 ? (
+          <p className="loading-message">Loading data...</p>
+        ) : (
+          <div className="grid-container">
+            {Object.entries(deviceData).map(([deviceId, data]) => {
+              return (
+                <div className="device-card" key={deviceId}>
+                  {/* <h2>{deviceId}</h2> */}
+                  <div className="device-info">
+                    <Doughnut
+                      className="doughnut-chart"
+                      data={createChartData(data.value)}
+                      options={options}
+                    />
+                    <div>
+                      {/* Timestamp: {new Date(data.timestamp).toLocaleString()} */}
+                      {/* <br /> */}
+                      <span className="guage_value">{data.value} kWh</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </header>
     </div>
   );
