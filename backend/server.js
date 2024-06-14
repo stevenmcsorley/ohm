@@ -5,7 +5,7 @@ const { createClient } = require("redis");
 
 const app = express();
 const server = http.createServer(app);
-const wss = new WebSocket.Server({ noServer: true });
+const wss = new WebSocket.Server({ noServer: true, path: "/ws" });
 const subscriber = createClient({
   url: "redis://redis-server:6379",
 });

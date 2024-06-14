@@ -14,7 +14,12 @@ function DeviceRiver() {
   const [ws, setWs] = useState<WebSocket | null>(null);
 
   const connectWebSocket = () => {
-    const socket = new WebSocket("ws://backend.localhost/ws");
+    // const protocol = window.location.protocol === "https:" ? "wss" : "ws";
+    // const host =
+    //   window.location.hostname === "localhost"
+    //     ? "backend.localhost"
+    //     : "backend.stevenmcsorley.co.uk";
+    const socket = new WebSocket(`wss://backend.stevenmcsorley.co.uk:8000/ws`);
 
     socket.addEventListener("open", () => {
       console.log("Connected to WS Server");
@@ -37,10 +42,12 @@ function DeviceRiver() {
       }
     });
 
-    socket.addEventListener("close", () => {
-      console.log("Disconnected from WS Server");
-      // Attempt to reconnect after a delay
-      setTimeout(connectWebSocket, 5000);
+    socket.addEventListener("close", (event) => {
+      console.log("Disconnected from WS Server", event);
+      // Attempt to reconnect after a delay if not closed cleanly
+      if (!event.wasClean) {
+        setTimeout(connectWebSocket, 5000);
+      }
     });
 
     socket.addEventListener("error", (error) => {
