@@ -19,7 +19,7 @@ function DeviceRiver() {
     //   window.location.hostname === "localhost"
     //     ? "backend.localhost"
     //     : "backend.stevenmcsorley.co.uk";
-    const socket = new WebSocket(`wss://backend.stevenmcsorley.co.uk:8000/ws`);
+    const socket = new WebSocket(`wss://backend.stevenmcsorley.co.uk/ws`);
 
     socket.addEventListener("open", () => {
       console.log("Connected to WS Server");
