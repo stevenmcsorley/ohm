@@ -152,7 +152,10 @@ function DeviceRiver() {
           property="og:description"
           content="Experimenting with Redis and WebSockets for real-time IoT data streaming from devices to frontend applications."
         />
-        <meta property="og:image" content="./og.png" />
+        <meta
+          property="og:image"
+          content="https://stevenmcsorley.co.uk/og.png"
+        />
         <meta
           property="og:url"
           content="https://stevenmcsorley.co.uk/live-iot-data-streaming"

@@ -15,7 +15,10 @@ const HomePage = () => {
           property="og:description"
           content="Welcome to Steven McSorley's portfolio. Explore my projects and get to know me."
         />
-        <meta property="og:image" content="./og.png" />
+        <meta
+          property="og:image"
+          content="https://stevenmcsorley.co.uk/og.png"
+        />
         <meta property="og:url" content="https://stevenmcsorley.co.uk" />
         <meta property="og:type" content="website" />
       </Helmet>
