@@ -61,20 +61,13 @@ function DeviceRiver() {
     socket.addEventListener("message", (event) => {
       console.log("Message from server ", event.data);
       try {
-        const message = JSON.parse(event.data);
-
-        // Ensure message is an array
-        const messages = Array.isArray(message) ? message : [message];
+        const messages: DeviceData[] = JSON.parse(event.data);
 
         setDeviceData((prevData) => {
           const newData = { ...prevData };
-          messages.forEach((msg: { channel: string; data: string }) => {
-            const newMessage = JSON.parse(msg.data); // Parse the data field
-            console.log(
-              `Processing device: ${newMessage.deviceId}`,
-              newMessage
-            );
-            newData[newMessage.deviceId] = newMessage;
+          messages.forEach((msg) => {
+            console.log(`Processing device: ${msg.deviceId}`, msg);
+            newData[msg.deviceId] = msg;
           });
           console.log("Updated Device Data: ", newData); // Log to check all devices
           return newData;
@@ -146,32 +139,25 @@ function DeviceRiver() {
   return (
     <div className="DeviceRiver">
       <header className="DeviceRiver-header">
-        <h1>Device Data Stream!</h1>
-        {deviceData && Object.keys(deviceData).length === 0 ? (
-          <p className="loading-message">Loading data...</p>
-        ) : (
-          <div className="grid-container">
-            {Object.entries(deviceData).map(([deviceId, data]) => {
-              return (
-                <div className="device-card" key={deviceId}>
-                  {/* <h2>{deviceId}</h2> */}
-                  <div className="device-info">
-                    <Doughnut
-                      className="doughnut-chart"
-                      data={createChartData(data.value)}
-                      options={options}
-                    />
-                    <div>
-                      {/* Timestamp: {new Date(data.timestamp).toLocaleString()} */}
-                      {/* <br /> */}
-                      <span className="guage_value">{data.value} kWh</span>
-                    </div>
+        <h1>Device Data Stream</h1>
+        <div className="grid-container">
+          {Object.entries(deviceData).map(([deviceId, data]) => {
+            return (
+              <div className="device-card" key={deviceId}>
+                <div className="device-info">
+                  <Doughnut
+                    className="doughnut-chart"
+                    data={createChartData(data.value)}
+                    options={options}
+                  />
+                  <div>
+                    <span className="guage_value">{data.value} kWh</span>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        )}
+              </div>
+            );
+          })}
+        </div>
       </header>
     </div>
   );
