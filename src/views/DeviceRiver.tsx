@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import "./DeviceRiver.css";
 
 Chart.register(ArcElement, Tooltip, Legend);
 
-// Custom plugin to draw needle
 const drawNeedle = (chart) => {
   const {
     ctx,
@@ -14,7 +13,7 @@ const drawNeedle = (chart) => {
   const angle = (Math.PI * chart.data.datasets[0].data[0]) / 100 + Math.PI;
   const r = Math.min(width, height) / 2;
   const x = width / 2;
-  const y = height / 2 + 48; // Adjust this value to move the needle down
+  const y = height / 2 + 48;
 
   ctx.save();
   ctx.translate(x, y);
@@ -69,7 +68,6 @@ function DeviceRiver() {
             console.log(`Processing device: ${msg.deviceId}`, msg);
             newData[msg.deviceId] = msg;
           });
-          console.log("Updated Device Data: ", newData); // Log to check all devices
           return newData;
         });
       } catch (error) {
@@ -139,7 +137,7 @@ function DeviceRiver() {
   return (
     <div className="DeviceRiver">
       <header className="DeviceRiver-header">
-        <h1>Device Data Stream</h1>
+        <h1>Device Data Streaming</h1>
         <div className="grid-container">
           {Object.entries(deviceData).map(([deviceId, data]) => {
             return (
