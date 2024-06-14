@@ -29,6 +29,9 @@ const httpRequestCounter = new client.Counter({
   labelNames: ["method", "path"],
 });
 
+// Register the custom metric
+register.registerMetric(httpRequestCounter);
+
 // Middleware to count all HTTP requests
 app.use((req, res, next) => {
   httpRequestCounter.inc({ method: req.method, path: req.path });
