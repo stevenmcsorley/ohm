@@ -21,6 +21,10 @@ const HomePage = () => {
         />
         <meta property="og:url" content="https://stevenmcsorley.co.uk" />
         <meta property="og:type" content="website" />
+        <meta
+          name="twitter:title"
+          content="Steven McSorley | Software Engineer"
+        />
       </Helmet>
       <Hero />
       <div className="profile-cards-container">

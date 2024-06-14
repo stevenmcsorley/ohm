@@ -161,6 +161,10 @@ function DeviceRiver() {
           content="https://stevenmcsorley.co.uk/live-iot-data-streaming"
         />
         <meta property="og:type" content="article" />
+        <meta
+          name="twitter:title"
+          content="Steven McSorley | Software Engineer"
+        />
       </Helmet>
       <header className="DeviceRiver-header">
         {Object.keys(deviceData).length === 0 && <h1>Loading live data</h1>}
