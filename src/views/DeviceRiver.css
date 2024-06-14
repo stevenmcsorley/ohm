@@ -1,20 +1,90 @@
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  justify-content: center;
+/* DeviceRiver.css */
+
+.DeviceRiver {
+  text-align: center;
   padding: 20px;
+  background-color: #1c1c1c;
+}
+
+.DeviceRiver-header {
+  margin-bottom: 40px;
+}
+
+.grid-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .device-card {
-  background-color: #3a3f47;
-  border: 1px solid #61dafb;
-  border-radius: 10px;
+  border-radius: 100%;
+  width: 250px;
+  margin: 10px;
   padding: 20px;
+  color: black;
   text-align: center;
-  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  position: relative;
+  border: 12px solid black;
+  background-color: white;
+}
+
+.device-card:hover {
+  transform: translateY(-10px);
 }
 
 .device-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 200px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.device-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.device-card p {
   margin: 10px 0;
+  font-size: 1em;
+}
+
+.device-card .doughnut-chart {
+  margin-top: -50px;
+}
+
+/* Orange overlay */
+.device-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 155, 255, 0.568); /* Orange color with transparency */
+  /* blue gradient transaprenet like a navy guage */
+  background: linear-gradient(
+    180deg,
+    rgba(5, 155, 255, 0.668) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  border-radius: 100%;
+  pointer-events: none; /* Ensure overlay does not interfere with interactions */
+  z-index: 99;
+}
+
+.guage_value {
+  position: absolute;
+  bottom: 10%;
+  left: 35%;
+  font-size: 1em;
+  font-weight: bold;
+  color: #000;
 }

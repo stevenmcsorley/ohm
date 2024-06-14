@@ -8,10 +8,10 @@ const HomePage = () => {
       <Hero />
       <div className="profile-cards-container">
         <ProfileCard
-          title="Project One"
-          description="This is a brief description of Project One."
+          title="Device Data Stream"
+          description="Streaming Data using Reddis and Websockets."
           imageUrl="https://picsum.photos/200/300?random=1"
-          link="#"
+          link="/device-river"
         />
         <ProfileCard
           title="Project Two"

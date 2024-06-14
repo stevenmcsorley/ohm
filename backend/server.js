@@ -41,20 +41,12 @@ subscriber
   .then(() => {
     console.log("Connected to Redis successfully.");
 
-    const devices = ["device1", "device2", "device3"];
-    devices.forEach((device) => {
-      subscriber.subscribe(device, (message) => {
-        console.log(`Message from ${device}: ${message}`);
-        wss.clients.forEach((client) => {
-          if (client.readyState === WebSocket.OPEN) {
-            client.send(
-              JSON.stringify({
-                channel: device,
-                data: message,
-              })
-            );
-          }
-        });
+    subscriber.subscribe("device-updates", (message) => {
+      console.log(`Batch message: ${message}`);
+      wss.clients.forEach((client) => {
+        if (client.readyState === WebSocket.OPEN) {
+          client.send(message);
+        }
       });
     });
   })

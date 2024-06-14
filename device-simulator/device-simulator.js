@@ -10,19 +10,22 @@ publisher
     console.error("Failed to connect to Redis:", err);
   });
 
-function publishData(deviceId) {
-  const data = {
+function publishData() {
+  const data = [
+    "device1",
+    "device2",
+    "device3",
+    "device4",
+    "device5",
+    "device6",
+  ].map((deviceId) => ({
     deviceId,
     timestamp: Date.now(),
     value: Math.floor(Math.random() * 100),
-  };
+  }));
 
-  console.log(`Publishing data for ${deviceId}:`, data);
-  publisher.publish(deviceId, JSON.stringify(data));
+  console.log("Publishing batch data:", data);
+  publisher.publish("device-updates", JSON.stringify(data));
 }
 
-setInterval(() => {
-  publishData("device1");
-  publishData("device2");
-  publishData("device3");
-}, 5000); // Send data every second
+setInterval(publishData, 7000);
