@@ -45,7 +45,30 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
           script: |
+            echo "Pulling latest changes from Git..."
             cd ${{ secrets.VPS_PATH }}
             git pull origin main
+
+            echo "Pulling the latest Docker images..."
+            docker-compose pull
+
+            echo "Rebuilding and restarting Docker containers..."
             docker-compose down
             docker-compose up --build -d
+
+            echo "Displaying running Docker containers..."
+            docker ps
+
+            echo "Inspecting Docker container..."
+            docker inspect $(docker ps -q)
+
+      - name: Cleanup Docker
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT }}
+          script: |
+            docker system prune -f
+            docker image prune -f
