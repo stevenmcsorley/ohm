@@ -15,6 +15,8 @@ import TermsOfService from "./views/TermsOfService";
 import initializeAnalytics from "./analytics";
 import usePageTracking from "./hooks/usePageTracking";
 
+import BlogPost from "./components/BlogPost";
+
 const AppRoutes = () => {
   usePageTracking();
 
@@ -27,6 +29,7 @@ const AppRoutes = () => {
       <Route path="/contact" element={<Contact />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms-of-service" element={<TermsOfService />} />
+      <Route path="/blog/:id" element={<BlogPost />} />
     </Routes>
   );
 };

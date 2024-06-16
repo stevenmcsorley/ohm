@@ -1,0 +1,28 @@
+.post-excerpt {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.post-excerpt img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.post-excerpt-content {
+  padding: 20px;
+}
+
+.post-excerpt h2 {
+  font-size: 1.5em;
+  margin: 0 0 10px;
+}
+
+.post-excerpt p {
+  font-size: 1em;
+  margin: 0;
+}

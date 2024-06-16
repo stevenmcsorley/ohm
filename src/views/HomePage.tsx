@@ -1,7 +1,39 @@
-import Hero from "../components/Hero";
 import { Helmet } from "react-helmet-async";
-import ProfileCard from "../components/ProfileCard";
+import PostExcerpt from "../components/PostExcerpt";
+import { getPostMetadata } from "../utils/loadPosts";
+import { useEffect, useState } from "react";
+
+interface Post {
+  id: string;
+  title: string;
+  description: string;
+  related: boolean;
+}
+
 const HomePage = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [randomQuote, setRandomQuote] = useState<string>("");
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const posts = await getPostMetadata();
+      setPosts(posts);
+    };
+
+    const fetchQuote = async () => {
+      const response = await fetch("/quotes.json");
+      const quotes = await response.json();
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      setRandomQuote(quotes[randomIndex]);
+    };
+
+    fetchPosts();
+    fetchQuote();
+  }, []);
+
+  const mainPosts = posts.filter((post) => !post.related);
+  const relatedContent = posts.filter((post) => post.related);
+
   return (
     <main>
       <Helmet>
@@ -26,56 +58,47 @@ const HomePage = () => {
           content="Steven McSorley | Software Engineer"
         />
       </Helmet>
-      <Hero />
-      <div className="profile-cards-container">
-        <ProfileCard
-          title="Live IoT Data Streaming Using Redis and WebSockets"
-          description="Exploring the implementation of real-time data streaming for IoT devices using Redis and WebSockets to deliver instantaneous updates."
-          imageUrl="https://picsum.photos/200/300?random=1"
-          link="/live-iot-data-streaming"
-        />
-        <ProfileCard
-          title="Project 2"
-          description="This is a brief description of Project Two."
-          imageUrl="https://picsum.photos/200/300?random=2"
-          link="#"
-        />
-        <ProfileCard
-          title="Project 3"
-          description="This is a brief description of Project Three."
-          imageUrl="https://picsum.photos/200/300?random=3"
-          link="#"
-        />
-        <ProfileCard
-          title="Project Four"
-          description="This is a brief description of Project Four."
-          imageUrl="https://picsum.photos/200/300?random=4"
-          link="#"
-        />
-        <ProfileCard
-          title="Project Five"
-          description="This is a brief description of Project Five."
-          imageUrl="https://picsum.photos/200/300?random=5"
-          link="#"
-        />
-        <ProfileCard
-          title="Project Six"
-          description="This is a brief description of Project Six."
-          imageUrl="https://picsum.photos/200/300?random=6"
-          link="#"
-        />
-        <ProfileCard
-          title="Project 7"
-          description="This is a brief description of Project Seven."
-          imageUrl="https://picsum.photos/200/300?random=7"
-          link="#"
-        />
-        <ProfileCard
-          title="Project Eight"
-          description="This is a brief description of Project Eight."
-          imageUrl="https://picsum.photos/200/300?random=8"
-          link="#"
-        />
+      <div className="container mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
+        {/* Main Posts */}
+        <div className="flex flex-col w-full lg:w-3/4 gap-0">
+          /* grid so its liek square bricks */
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {mainPosts.map((post) => (
+              <PostExcerpt
+                key={post.id}
+                id={post.id}
+                title={post.title}
+                description={post.description}
+                className="h-auto"
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Sidebar */}
+        <div className="lg:w-1/4 flex flex-col gap-8 lg:mt-6">
+          {/* Random Quote */}
+          <div className="bg-white p-4 shadow-md rounded-md">
+            <h2 className="text-xl font-bold mb-4">Work & Life</h2>
+            <p>{randomQuote}</p>
+          </div>
+
+          {/* Related Content */}
+          <div className="bg-white p-4 shadow-md rounded-md">
+            <h2 className="text-xl font-bold mb-4">Related Content</h2>
+            <ul className="space-y-4">
+              {relatedContent.map((post) => (
+                <li key={post.id}>
+                  <PostExcerpt
+                    id={post.id}
+                    title={post.title}
+                    description={post.description}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </main>
   );

@@ -61,12 +61,10 @@
   text-decoration: underline;
 }
 
-/* Increase spacing between sections */
 .blog-content > * + * {
   margin-top: 20px;
 }
 
-/* Highlight key points */
 .blog-content strong {
   font-weight: bold;
 }
@@ -75,7 +73,6 @@
   font-style: italic;
 }
 
-/* Adjust margins and padding */
 .blog-content .container {
   margin: 20px 0;
   padding: 20px;

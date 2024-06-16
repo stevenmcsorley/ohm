@@ -1,0 +1,149 @@
+/* General styles */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #2b2b2b;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for the blog post */
+.blog-post {
+  padding: 20px;
+  max-width: 800px;
+  margin: 40px auto;
+  background: #f0f0f0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  color: #333;
+  text-align: left; /* Ensure text is left-aligned */
+}
+
+/* Headings */
+.blog-post h1,
+.blog-post h2,
+.blog-post h3 {
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  color: #222;
+  line-height: 1.2;
+}
+
+.blog-post h1 {
+  font-size: 2.5em;
+}
+
+.blog-post h2 {
+  font-size: 2em;
+}
+
+.blog-post h3 {
+  font-size: 1.75em;
+}
+
+/* Paragraphs */
+.blog-post p {
+  margin-bottom: 1.5em;
+  font-size: 1.1em;
+  line-height: 1.8;
+}
+
+/* Blockquotes */
+.blog-post blockquote {
+  padding: 10px 20px;
+  margin: 20px 0;
+  font-size: 1.25em;
+  border-left: 5px solid #007bff;
+  background: #f9f9f9;
+  color: #555;
+}
+
+/* Lists */
+.blog-post ul,
+.blog-post ol {
+  margin-bottom: 1.5em;
+  padding-left: 40px; /* Ensure proper indentation */
+}
+
+.blog-post ul li,
+.blog-post ol li {
+  margin-bottom: 0.5em;
+  font-size: 1.1em;
+}
+
+/* Code blocks */
+.blog-post pre {
+  background: #272822;
+  color: #f8f8f2;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin-bottom: 1.5em;
+}
+
+.blog-post code {
+  background: #f5f5f5;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 0.95em;
+}
+
+/* Horizontal rules */
+.blog-post hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 2em 0;
+}
+
+/* Images */
+.blog-post img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1.5em;
+}
+
+/* Links */
+.blog-post a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.blog-post a:hover {
+  text-decoration: underline;
+}
+
+/* Tables */
+.blog-post table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+}
+
+.blog-post table th,
+.blog-post table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.blog-post table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+/* Video container for responsive design */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
