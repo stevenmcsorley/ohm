@@ -2,79 +2,85 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  color: #333;
-  background-color: #2b2b2b;
   margin: 0;
   padding: 0;
 }
 
 /* Container for the blog post */
-.blog-post {
+.blog-post-container {
   padding: 20px;
-  max-width: 800px;
+  max-width: 900px; /* Increased max-width */
   margin: 40px auto;
-  background: #f0f0f0;
+  background: #000000;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  color: #333;
-  text-align: left; /* Ensure text is left-aligned */
+  color: silver;
+}
+
+/* Content */
+.blog-post-content {
+  color: silver;
 }
 
 /* Headings */
-.blog-post h1,
-.blog-post h2,
-.blog-post h3 {
+.blog-post-content h1,
+.blog-post-content h2,
+.blog-post-content h3 {
   font-weight: 600;
   margin-top: 1.5em;
   margin-bottom: 0.75em;
-  color: #222;
+  color: silver;
   line-height: 1.2;
+  text-align: left; /* Left-align the headings */
 }
 
-.blog-post h1 {
+.blog-post-content h1 {
   font-size: 2.5em;
 }
 
-.blog-post h2 {
+.blog-post-content h2 {
   font-size: 2em;
 }
 
-.blog-post h3 {
+.blog-post-content h3 {
   font-size: 1.75em;
 }
 
 /* Paragraphs */
-.blog-post p {
+.blog-post-content p {
   margin-bottom: 1.5em;
   font-size: 1.1em;
   line-height: 1.8;
+  text-align: left; /* Left-align the paragraphs */
 }
 
 /* Blockquotes */
-.blog-post blockquote {
+.blog-post-content blockquote {
   padding: 10px 20px;
   margin: 20px 0;
   font-size: 1.25em;
   border-left: 5px solid #007bff;
-  background: #f9f9f9;
-  color: #555;
+  background: #383838;
+  color: #f5f5f5;
+  text-align: left; /* Left-align blockquotes */
 }
 
 /* Lists */
-.blog-post ul,
-.blog-post ol {
+.blog-post-content ul,
+.blog-post-content ol {
   margin-bottom: 1.5em;
   padding-left: 40px; /* Ensure proper indentation */
 }
 
-.blog-post ul li,
-.blog-post ol li {
+.blog-post-content ul li,
+.blog-post-content ol li {
   margin-bottom: 0.5em;
   font-size: 1.1em;
+  text-align: left; /* Left-align list items */
 }
 
 /* Code blocks */
-.blog-post pre {
+.blog-post-content pre {
   background: #272822;
   color: #f8f8f2;
   padding: 10px;
@@ -83,52 +89,53 @@ body {
   margin-bottom: 1.5em;
 }
 
-.blog-post code {
-  background: #f5f5f5;
+.blog-post-content code {
+  background: #383838;
+  color: #f8f8f2;
   padding: 2px 4px;
   border-radius: 3px;
   font-size: 0.95em;
 }
 
 /* Horizontal rules */
-.blog-post hr {
+.blog-post-content hr {
   border: none;
   border-top: 1px solid #eee;
   margin: 2em 0;
 }
 
 /* Images */
-.blog-post img {
+.blog-post-content img {
   max-width: 100%;
   height: auto;
   margin-bottom: 1.5em;
 }
 
 /* Links */
-.blog-post a {
+.blog-post-content a {
   color: #007bff;
   text-decoration: none;
 }
 
-.blog-post a:hover {
+.blog-post-content a:hover {
   text-decoration: underline;
 }
 
 /* Tables */
-.blog-post table {
+.blog-post-content table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1.5em;
 }
 
-.blog-post table th,
-.blog-post table td {
+.blog-post-content table th,
+.blog-post-content table td {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-.blog-post table th {
-  background-color: #f2f2f2;
+.blog-post-content table th {
+  background-color: #383838;
   text-align: left;
 }
 

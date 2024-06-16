@@ -2,6 +2,10 @@
 id: "post1"
 title: "Experimenting with Redis and WebSockets for Real-Time IoT Data Streaming"
 description: "In-depth exploration of Redis and WebSockets for real-time data transmission in IoT projects."
+slug: "experimenting-redis-websockets-real-time-iot-data-streaming"
+date: "2022-01-15"
+category: "Engineering"
+tags: "Redis, WebSockets, IoT, Real-Time, Experiment"
 ---
 
 In the realm of software engineering, depth in understanding technical decisions is crucial. To explore the potential of Redis and WebSockets for streaming real-time data from IoT devices to a frontend application, I embarked on an in-depth experiment. This project aimed to evaluate the effectiveness of Redis and WebSockets as a solution for real-time data transmission, a common necessity in IoT projects.

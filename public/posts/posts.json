@@ -3,120 +3,185 @@
     "id": "post1",
     "title": "Experimenting with Redis and WebSockets for Real-Time IoT Data Streaming",
     "description": "In-depth exploration of Redis and WebSockets for real-time data transmission in IoT projects.",
-    "related": true
+    "slug": "experimenting-with-redis-and-websockets-for-real-time-iot-data-streaming",
+    "date": "2023-06-01",
+    "category": "Technology",
+    "related": false
   },
   {
     "id": "post2",
-    "title": "Another Blog Post Title",
-    "description": "A brief description of another blog post.",
+    "title": "Exploring Behavior Driven Development (BDD)",
+    "description": "A comprehensive look at Behavior Driven Development (BDD), its benefits, and best practices.",
+    "slug": "exploring-behavior-driven-development-bdd",
+    "date": "2023-06-01",
+    "category": "Software Development",
+    "tags": "BDD, Behavior Driven Development, Testing, Best Practices",
     "related": false
   },
   {
     "id": "post3",
-    "title": "A Third Blog Post Title",
-    "description": "A brief description of a third blog post.",
-    "related": false
+    "title": "The Importance of Unit Testing in JavaScript and React",
+    "description": "An exploration of unit testing in JavaScript and React, addressing common misconceptions and highlighting its benefits.",
+    "slug": "importance-unit-testing-javascript-react",
+    "date": "2023-07-15",
+    "category": "Software Development",
+    "related": false,
+    "tags": "Unit Testing, JavaScript, React, TDD, Best Practices"
   },
   {
     "id": "post4",
-    "title": "A Fourth Blog Post Title",
-    "description": "A brief description of a fourth blog post.",
-    "related": true
+    "title": "Exploring the Power of Docker and Kubernetes",
+    "description": "A comprehensive guide to understanding and utilizing Docker and Kubernetes for container orchestration.",
+    "slug": "exploring-the-power-of-docker-and-kubernetes",
+    "date": "2023-06-04",
+    "category": "Technology",
+    "related": false
   },
   {
     "id": "post5",
-    "title": "A Fifth Blog Post Title",
-    "description": "A brief description of a fifth blog post.",
+    "title": "The Myth of the 10x Developer: Why Team Collaboration Beats Individual Brilliance",
+    "description": "Debunking the myth of the 10x developer and highlighting the importance of teamwork.",
+    "slug": "myth-10x-developer-team-collaboration",
+    "date": "2023-09-08",
+    "category": "Team Dynamics",
     "related": false
   },
   {
     "id": "post6",
-    "title": "A Sixth Blog Post Title",
-    "description": "A brief description of a sixth blog post.",
-    "related": true
+    "title": "The Overhyped Full-Stack Developer: Why Specialization Still Matters",
+    "description": "Arguing against the trend of full-stack development and advocating for specialization.",
+    "slug": "overhyped-full-stack-developer-specialization-matters",
+    "date": "2023-09-15",
+    "category": "Career Development",
+    "related": false
   },
   {
     "id": "post7",
-    "title": "A Seventh Blog Post Title",
-    "description": "A brief description of a seventh blog post.",
+    "title": "The Dangers of Overengineering: Why Simple Solutions Often Win",
+    "description": "Discussing the pitfalls of overengineering and the benefits of simplicity in software development.",
+    "slug": "dangers-of-overengineering-simple-solutions",
+    "date": "2023-09-22",
+    "category": "Software Engineering",
     "related": false
   },
   {
     "id": "post8",
-    "title": "An Eighth Blog Post Title",
-    "description": "A brief description of an eighth blog post.",
+    "title": "Why Coding Standards are Non-Negotiable in Professional Development",
+    "description": "Emphasizing the importance of coding standards in maintaining code quality and consistency.",
+    "slug": "coding-standards-non-negotiable",
+    "date": "2023-09-29",
+    "category": "Best Practices",
     "related": false
   },
   {
     "id": "post9",
-    "title": "A Ninth Blog Post Title",
-    "description": "A brief description of a ninth blog post.",
+    "title": "The False Promise of No-Code Platforms: Why Developers are Still Essential",
+    "description": "Critiquing the limitations of no-code platforms and emphasizing the irreplaceable role of developers.",
+    "slug": "false-promise-no-code-platforms",
+    "date": "2023-10-06",
+    "category": "Software Development",
     "related": false
   },
   {
     "id": "post10",
-    "title": "A Tenth Blog Post Title",
-    "description": "A brief description of a tenth blog post.",
-    "related": true
+    "title": "Agile is Not a Silver Bullet: The Misconceptions and Misuses of Agile Methodologies",
+    "description": "Addressing the misconceptions and common misuses of Agile methodologies in software development.",
+    "slug": "agile-not-silver-bullet",
+    "date": "2023-10-13",
+    "category": "Agile Development",
+    "related": false
   },
   {
     "id": "post11",
-    "title": "An Eleventh Blog Post Title",
-    "description": "A brief description of an eleventh blog post.",
+    "title": "Why Test-Driven Development (TDD) is Essential for Quality Code",
+    "description": "Arguing for the importance of Test-Driven Development (TDD) in maintaining code quality.",
+    "slug": "importance-of-tdd-quality-code",
+    "date": "2023-10-20",
+    "category": "Software Quality",
     "related": false
   },
   {
     "id": "post12",
-    "title": "A Twelfth Blog Post Title",
-    "description": "A brief description of a twelfth blog post.",
-    "related": true
+    "title": "Why Code Reviews are Crucial for Team Success",
+    "description": "Highlighting the importance of code reviews in improving team performance and code quality.",
+    "slug": "importance-of-code-reviews",
+    "date": "2023-10-27",
+    "category": "Team Dynamics",
+    "related": false
   },
   {
     "id": "post13",
-    "title": "A Thirteenth Blog Post Title",
-    "description": "A brief description of a thirteenth blog post.",
+    "title": "The Importance of Continuous Integration and Continuous Deployment (CI/CD)",
+    "description": "Exploring why CI/CD is vital for modern software development.",
+    "slug": "importance-of-ci-cd",
+    "date": "2023-11-03",
+    "category": "DevOps",
     "related": false
   },
   {
     "id": "post14",
-    "title": "A Fourteenth Blog Post Title",
-    "description": "A brief description of a fourteenth blog post.",
+    "title": "Why You Should Embrace Open Source Contributions",
+    "description": "Discussing the benefits of contributing to open source projects.",
+    "slug": "embrace-open-source-contributions",
+    "date": "2023-11-10",
+    "category": "Open Source",
     "related": false
   },
   {
     "id": "post15",
-    "title": "A Fifteenth Blog Post Title",
-    "description": "A brief description of a fifteenth blog post.",
-    "related": true
+    "title": "The Importance of Learning Programming Foundations and Maintaining Balance",
+    "description": "Exploring the benefits of learning the foundations of a programming language, filling knowledge gaps, and maintaining a healthy work-life balance.",
+    "slug": "importance-of-learning-programming-foundations",
+    "date": "2023-11-17",
+    "category": "Software Development",
+    "tags": "Programming Foundations, Continuous Learning, Work-Life Balance, Best Practices",
+    "related": false
   },
   {
     "id": "post16",
-    "title": "A Sixteenth Blog Post Title",
-    "description": "A brief description of a sixteenth blog post.",
-    "related": false
+    "title": "The Cargo Cult in Software Development: Avoiding Superficial Practices",
+    "description": "Discussing the concept of cargo cult in software development and how to avoid superficial practices that hinder true progress.",
+    "slug": "cargo-cult-software-development",
+    "date": "2023-11-24",
+    "category": "Software Engineering",
+    "tags": "Cargo Cult, Software Development, Best Practices",
+    "related": true
   },
   {
     "id": "post17",
-    "title": "A Seventeenth Blog Post Title",
-    "description": "A brief description of a seventeenth blog post.",
-    "related": false
+    "title": "Why 'Move Fast and Break Things' is a Terrible Approach for Software Development",
+    "description": "Debunking the myth that moving fast and breaking things leads to innovation in software development.",
+    "slug": "move-fast-break-things-terrible-approach",
+    "date": "2023-12-01",
+    "category": "Best Practices",
+    "related": true
   },
   {
     "id": "post18",
-    "title": "An Eighteenth Blog Post Title",
-    "description": "A brief description of an eighteenth blog post.",
+    "title": "Why Learning Algebra You Forgot in High School is Good for Your Mind and Your Coding Skills",
+    "description": "Exploring the benefits of relearning algebra and how it can enhance both mental acuity and programming skills.",
+    "slug": "learning-algebra-benefits-coding-skills",
+    "date": "2023-12-08",
+    "category": "Personal Development",
+    "tags": "Algebra, Math, Coding Skills, Mental Acuity",
     "related": true
   },
   {
     "id": "post19",
-    "title": "A Nineteenth Blog Post Title",
-    "description": "A brief description of a nineteenth blog post.",
-    "related": false
+    "title": "The Perils of Overengineering: When Perfection Becomes the Enemy of Progress",
+    "description": "Discussing how overengineering can hinder progress and why it's important to balance quality and efficiency.",
+    "slug": "perils-of-overengineering",
+    "date": "2023-12-15",
+    "category": "Software Engineering",
+    "related": true
   },
   {
     "id": "post20",
-    "title": "A Twentieth Blog Post Title",
-    "description": "A brief description of a twentieth blog post.",
+    "title": "Why Relying on Stack Overflow for All Your Coding Needs is a Recipe for Disaster",
+    "description": "Critiquing the over-reliance on Stack Overflow and emphasizing the importance of foundational knowledge.",
+    "slug": "relying-stack-overflow-recipe-for-disaster",
+    "date": "2023-12-22",
+    "category": "Best Practices",
     "related": true
   }
 ]

@@ -21,9 +21,16 @@ const Header = () => {
   return (
     <header className="bg-gray-900 text-white shadow-md">
       <div className="container mx-auto px-4 py-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">
-          Steven McSorley <span className="text-pink-500">&#8730;</span>
+        <h1 className="text-3xl font-thin">
+          573v3n mc50213y
+          <span
+            className="text-pink-500 relative text-sm"
+            style={{ top: "-1em", left: "-0em" }}
+          >
+            &#8730;
+          </span>
         </h1>
+
         <div className="md:hidden">
           <button onClick={toggleMenu} className="focus:outline-none">
             <svg

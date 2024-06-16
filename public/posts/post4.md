@@ -1,7 +1,11 @@
 ---
-id: "post2"
+id: "post4"
 title: "Exploring the Power of Docker and Kubernetes"
 description: "A comprehensive guide to understanding and utilizing Docker and Kubernetes for container orchestration."
+slug: "exploring-the-power-of-docker-and-kubernetes"
+date: "2023-06-04"
+category: "Technology"
+tags: "Docker, Kubernetes, Container Orchestration"
 ---
 
 In this article, we will dive into the powerful world of Docker and Kubernetes. These tools have revolutionized the way we deploy and manage applications.
