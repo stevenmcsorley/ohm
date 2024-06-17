@@ -30,7 +30,7 @@ To demonstrate how Docker and Kubernetes work together, let's take a look at a s
 
 Here's an example of a simple Docker container:
 
-\`\`\`dockerfile
+```dockerfile
 FROM node:14
 WORKDIR /app
 COPY package\*.json ./
@@ -38,13 +38,13 @@ RUN npm install
 COPY . .
 EXPOSE 3000
 CMD ["node", "server.js"]
-\`\`\`
+```
 
 ### Kubernetes Deployment
 
 And here's how you can deploy the Docker container using Kubernetes:
 
-\`\`\`yaml
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -62,10 +62,10 @@ spec:
 containers: - name: example-container
 image: example-image:latest
 ports: - containerPort: 3000
-\`\`\`
+```
 
 ## Demonstration Video
 
 Here's a video demonstrating Docker and Kubernetes in action:
 
-<p><iframe width="560" height="315" src="https://www.youtube.com/embed/M66U_DuMCS8" title="" frameBorder="0"   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  allowFullScreen><br>Powered by <a href="https://youtubeembedcode.com">html embed youtube video</a> and <a href="https://starburstnotongamstop.org/">starburstnotongamstop.org</a></iframe></p>
+<p><iframe src="https://www.youtube.com/embed/PziYflu8cB8" width="100%" height="400" title="" frameBorder="0"   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  allowFullScreen></iframe></p>

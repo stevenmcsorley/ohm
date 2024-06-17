@@ -22,7 +22,7 @@ const Header = () => {
     <header className="bg-black text-white shadow-md border-b-4 border-orange-500">
       <div className="container mx-auto px-4 py-6 flex items-center justify-between">
         <h1 className="text-3xl font-thin">
-          573v3n mc50213y
+          Steven McSorley
           <span
             className="text-pink-500 relative text-sm"
             style={{ top: "-1em", left: "-0em" }}
