@@ -130,7 +130,7 @@ const HomePage = () => {
             <h2 className="text-xl font-bold mb-4 text-white">Work & Life</h2>
             <p className="text-white">{randomQuote}</p>
           </div>
-          s{/* Related Content */}
+          {/* Related Content */}
           <div className="bg-stone-950 p-0 shadow-md rounded-md ">
             <h2 className="text-xl font-bold mb-4 pt-4 text-white border-t-4 border-orange-500">
               Featured
