@@ -174,14 +174,5 @@
     "date": "2023-12-15",
     "category": "Software Engineering",
     "related": true
-  },
-  {
-    "id": "post20",
-    "title": "Why Relying on Stack Overflow for All Your Coding Needs is a Recipe for Disaster",
-    "description": "Critiquing the over-reliance on Stack Overflow and emphasizing the importance of foundational knowledge.",
-    "slug": "relying-stack-overflow-recipe-for-disaster",
-    "date": "2023-12-22",
-    "category": "Best Practices",
-    "related": true
   }
 ]

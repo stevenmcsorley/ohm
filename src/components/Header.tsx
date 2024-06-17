@@ -19,7 +19,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-gray-900 text-white shadow-md">
+    <header className="bg-black text-white shadow-md">
       <div className="container mx-auto px-4 py-6 flex items-center justify-between">
         <h1 className="text-3xl font-thin">
           573v3n mc50213y
@@ -61,7 +61,7 @@ const Header = () => {
         <nav
           className={`${
             isOpen ? "block" : "hidden"
-          } absolute md:static bg-gray-900 w-full md:w-auto top-16 left-0 md:flex md:items-center md:space-x-6`}
+          } absolute md:static bg-black w-full md:w-auto top-16 left-0 md:flex md:items-center md:space-x-6 z-50`}
         >
           <Link
             to="/"
