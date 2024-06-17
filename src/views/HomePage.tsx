@@ -102,9 +102,9 @@ const HomePage = () => {
           content="Steven McSorley | Software Engineer"
         />
       </Helmet>
-      <div className="container mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8 ">
+      <div className="container mx-auto px-4 pb-8 flex flex-col lg:flex-row gap-8 ">
         {/* Main Posts */}
-        <div className="flex flex-col w-full lg:w-3/4 gap-0">
+        <div className="flex flex-col w-full lg:w-3/4 gap-0 pt-8">
           {/* <SearchBar onSearch={handleSearch} />
           <FilterBar onFilter={handleFilter} /> */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -124,7 +124,7 @@ const HomePage = () => {
         </div>
 
         {/* Sidebar */}
-        <div className="lg:w-1/4 gap-0 bg-stone-950 border-l-4 border-orange-500">
+        <div className="lg:w-1/4 gap-0 bg-stone-950 border-l-4 border-orange-500 pt-8">
           {/* Random Quote */}
           <div className="bg-black p-4 shadow-md rounded-md mb-8 md:ml-8">
             <h2 className="text-xl font-bold mb-4 text-white">Work & Life</h2>
