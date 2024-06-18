@@ -1,7 +1,9 @@
+import "./Footer.css";
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-8">
+    <footer className=" text-white py-8">
       <div className="container mx-auto px-4">
+        <div className="footer-main"></div>
         <div className="flex flex-col md:flex-col justify-start">
           <div className="mb-6 md:mb-0">
             <ul className="flex flex-wrap space-x-2 md:space-x-4">

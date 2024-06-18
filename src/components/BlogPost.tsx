@@ -66,7 +66,7 @@ const BlogPost = () => {
             </div>
           </div>
           <img
-            src={`https://picsum.photos/1200/600?random=${post.id}`}
+            src={`/imgs/${post.id}.webp`}
             alt={post.title}
             className="w-full h-64 object-cover rounded-md mb-6"
           />

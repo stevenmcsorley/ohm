@@ -27,9 +27,9 @@ const PostExcerpt: React.FC<PostExcerptProps> = ({
     >
       <Link to={`/blog/${slug}`}>
         <img
-          src={`https://picsum.photos/300/150?random=${id}`}
+          src={`/imgs/${id}.webp`}
           alt={title}
-          className="w-full opacity-90 object-cover rounded-t-md hover:opacity-100"
+          className="w-full max-h-44 opacity-90 object-cover rounded-t-md hover:opacity-100"
         />
       </Link>
       <div className="post-excerpt-content mt-0 text-white flex flex-col flex-grow">
