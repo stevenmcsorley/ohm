@@ -14,8 +14,12 @@ const kafka = new Kafka({
   brokers: ["kafka:9092"],
 });
 
-const consumer = kafka.consumer({ groupId: "websocket-group" });
-
+const consumer = kafka.consumer({
+  groupId: "websocket-group",
+  fetchMinBytes: 1 * 1024 * 1024, // 1 MB
+  fetchMaxWaitMs: 100,
+  maxPollRecords: 500,
+});
 // Prometheus metrics setup
 const register = new client.Registry();
 register.setDefaultLabels({

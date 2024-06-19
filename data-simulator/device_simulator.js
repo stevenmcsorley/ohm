@@ -5,7 +5,11 @@ const kafka = new Kafka({
   brokers: ["kafka:9092"],
 });
 
-const producer = kafka.producer();
+const producer = kafka.producer({
+  batchSize: 32 * 1024, // 32 KB
+  lingerMs: 10,
+  compression: "snappy",
+});
 
 const run = async () => {
   await producer.connect();
@@ -28,7 +32,7 @@ const run = async () => {
       topic: "device-updates",
       messages: [{ value: JSON.stringify(data) }],
     });
-  }, 7000);
+  }, 500); // Decreased interval to 100ms for higher frequency
 };
 
 run().catch(console.error);

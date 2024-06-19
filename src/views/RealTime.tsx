@@ -15,14 +15,14 @@ const RealTimeDataDisplay: React.FC = () => {
   const ws = useRef<WebSocket | null>(null);
 
   const connectWebSocket = () => {
-    const socket = new WebSocket(`wss://backend.stevenmcsorley.co.uk/ws`);
+    const socket = new WebSocket(`ws://localhost:8081/ws`);
 
     socket.addEventListener("open", () => {
       console.log("Connected to WS Server");
     });
 
     socket.addEventListener("message", (event) => {
-      console.log("Message from server ", event.data);
+      // console.log("Message from server ", event.data);
       try {
         const messages: DeviceData[] = JSON.parse(event.data);
 
@@ -33,7 +33,7 @@ const RealTimeDataDisplay: React.FC = () => {
           const messagesArray = Array.isArray(messages) ? messages : [messages];
 
           messagesArray.forEach((msg) => {
-            console.log(`Processing device: ${msg.deviceId}`, msg);
+            // console.log(`Processing device: ${msg.deviceId}`, msg);
             newData[msg.deviceId] = msg;
           });
 
@@ -41,7 +41,7 @@ const RealTimeDataDisplay: React.FC = () => {
         });
       } catch (error) {
         console.error("Failed to parse JSON", error);
-        console.error("Received message:", event.data);
+        // console.error("Received message:", event.data);
       }
     });
 
