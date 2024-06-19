@@ -15,7 +15,7 @@ const RealTimeDataDisplay: React.FC = () => {
   const ws = useRef<WebSocket | null>(null);
 
   const connectWebSocket = () => {
-    const socket = new WebSocket(`ws://localhost:8081/ws`);
+    const socket = new WebSocket(`wss://backend.stevenmcsorley.co.uk/ws`);
 
     socket.addEventListener("open", () => {
       console.log("Connected to WS Server");
