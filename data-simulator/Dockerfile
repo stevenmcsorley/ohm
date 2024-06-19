@@ -7,4 +7,5 @@ RUN npm install
 
 COPY . .
 
-CMD ["node", "device-simulator.js"]
+CMD ["node", "device_simulator.js"]
+

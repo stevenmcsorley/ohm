@@ -1,40 +1,44 @@
 const express = require("express");
 const http = require("http");
 const WebSocket = require("ws");
-const { Kafka } = require("kafkajs");
+const { createClient } = require("redis");
 const client = require("prom-client");
 
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ noServer: true, path: "/ws" });
-
-// Kafka client setup
-const kafka = new Kafka({
-  clientId: "backend",
-  brokers: ["kafka:9092"],
+const subscriber = createClient({
+  url: "redis://redis-server:6379",
 });
 
-const consumer = kafka.consumer({ groupId: "websocket-group" });
-
-// Prometheus metrics setup
+// Create a Registry which registers the metrics
 const register = new client.Registry();
+
+// Add a default label which is added to all metrics
 register.setDefaultLabels({
   app: "backend-server",
 });
+
+// Enable the collection of default metrics
 client.collectDefaultMetrics({ register });
 
+// Create a custom counter metric
 const httpRequestCounter = new client.Counter({
   name: "http_requests_total",
   help: "Total number of HTTP requests",
   labelNames: ["method", "path"],
 });
+
+// Register the custom metric
 register.registerMetric(httpRequestCounter);
 
+// Middleware to count all HTTP requests
 app.use((req, res, next) => {
   httpRequestCounter.inc({ method: req.method, path: req.path });
   next();
 });
 
+// Expose metrics at the /metrics endpoint
 app.get("/metrics", async (req, res) => {
   res.set("Content-Type", register.contentType);
   res.end(await register.metrics());
@@ -48,46 +52,51 @@ server.on("upgrade", (request, socket, head) => {
 
 wss.on("connection", (ws) => {
   console.log("Client connected to WebSocket.");
-  ws.send(
-    JSON.stringify([{ deviceId: "test", timestamp: Date.now(), value: 123 }])
-  );
-  ws.on("close", () => console.log("Client disconnected"));
+
+  ws.on("message", (message) => {
+    console.log("Received: %s", message);
+  });
+
+  ws.on("close", () => {
+    console.log("Client disconnected");
+  });
 });
 
-const run = async () => {
-  try {
-    await consumer.connect();
-    console.log("Kafka consumer connected.");
-    await consumer.subscribe({ topic: "device-updates", fromBeginning: true });
-    console.log("Kafka consumer subscribed to topic: device-updates.");
+wss.on("error", (error) => {
+  console.error("WebSocket error:", error);
+});
 
-    await consumer.run({
-      eachMessage: async ({ topic, partition, message }) => {
-        const data = message.value.toString();
-        console.log(`Received message: ${data}`);
-        wss.clients.forEach((client) => {
-          if (client.readyState === WebSocket.OPEN) {
-            console.log(`Sending data to WebSocket client: ${data}`);
-            client.send(data);
-          }
-        });
-      },
+subscriber.on("error", (err) => {
+  console.error("Redis client error:", err);
+});
+
+subscriber
+  .connect()
+  .then(() => {
+    console.log("Connected to Redis successfully.");
+
+    subscriber.subscribe("device-updates", (message) => {
+      wss.clients.forEach((client) => {
+        if (client.readyState === WebSocket.OPEN) {
+          client.send(message);
+        }
+      });
     });
-  } catch (error) {
-    console.error("Error in Kafka consumer:", error);
-  }
-};
-
-run().catch(console.error);
+  })
+  .catch((err) => {
+    console.error("Failed to connect to Redis:", err);
+  });
 
 server.listen(8080, () => {
-  console.log("WebSocket server started on port 8080");
+  console.log("Server started on http://localhost:8080");
 });
 
 const shutdown = () => {
   console.log("Shutting down server...");
-  consumer.disconnect();
-  server.close();
+  subscriber.quit();
+  server.close(() => {
+    console.log("Server shut down.");
+  });
   process.exit(0);
 };
 

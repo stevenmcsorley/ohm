@@ -4,9 +4,9 @@
   "description": "",
   "main": "device-simulator.js",
   "dependencies": {
+    "kafkajs": "^2.2.4",
     "redis": "^4.0.0"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "node device-simulator.js"
   },

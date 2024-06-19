@@ -10,6 +10,7 @@ import Projects from "./views/Projects";
 import Contact from "./views/Contact";
 import PrivacyPolicy from "./views/PrivacyPolicy";
 import TermsOfService from "./views/TermsOfService";
+import RealTimeDataDisplay from "./views/RealTime";
 
 import initializeAnalytics from "./analytics";
 import usePageTracking from "./hooks/usePageTracking";
@@ -28,6 +29,7 @@ const AppRoutes = () => {
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms-of-service" element={<TermsOfService />} />
       <Route path="/blog/:slug" element={<BlogPost />} />
+      <Route path="/real-time" element={<RealTimeDataDisplay />} />
     </Routes>
   );
 };
