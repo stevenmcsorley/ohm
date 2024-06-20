@@ -14,12 +14,8 @@ const kafka = new Kafka({
   brokers: ["kafka:9092"],
 });
 
-const consumer = kafka.consumer({
-  groupId: "websocket-group",
-  fetchMinBytes: 1 * 1024 * 1024, // 1 MB
-  fetchMaxWaitMs: 100,
-  maxPollRecords: 500,
-});
+const consumer = kafka.consumer({ groupId: "websocket-group" });
+
 // Prometheus metrics setup
 const register = new client.Registry();
 register.setDefaultLabels({
@@ -68,10 +64,10 @@ const run = async () => {
     await consumer.run({
       eachMessage: async ({ topic, partition, message }) => {
         const data = message.value.toString();
-        console.log(`Received message: ${data}`);
+        // console.log(`Received message: ${data}`);
         wss.clients.forEach((client) => {
           if (client.readyState === WebSocket.OPEN) {
-            console.log(`Sending data to WebSocket client: ${data}`);
+            // console.log(`Sending data to WebSocket client: ${data}`);
             client.send(data);
           }
         });
