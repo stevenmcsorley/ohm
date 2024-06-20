@@ -18,14 +18,14 @@ jobs:
         with:
           node-version: "20.x" # Updated to use Node.js 20
 
-      - name: Install Dependencies
+      - name: Install Main Project Dependencies
         run: npm ci
+
+      - name: Install BDD Test Dependencies
+        run: npm ci --prefix bdd-tests
 
       - name: Run Unit Tests
         run: npm test
-
-      - name: Install Playwright Dependencies
-        run: npm install --save-dev @playwright/test @cucumber/cucumber
 
       - name: Run BDD Tests
         run: npm run test --prefix bdd-tests
