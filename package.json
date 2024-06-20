@@ -8,9 +8,7 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "vitest",
-    "bdd": "cucumber-js features/**/*.feature --require-module ts-node/register --require test.setup.ts --require step-definitions/**/*.ts -f @cucumber/pretty-formatter -f json:reports/cucumber_report.json",
-    "generate-report": "node generate-report.js"
+    "test": "vitest"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.4",

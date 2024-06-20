@@ -26,8 +26,8 @@ jobs:
       - name: Install BDD Test Dependencies
         run: npm ci --prefix bdd-tests
 
-      - name: Start Application Server
-        run: npm run start &
+      - name: Start Application Server in Test Mode
+        run: npm run dev -- --mode test &
         env:
           PORT: 8000
 
