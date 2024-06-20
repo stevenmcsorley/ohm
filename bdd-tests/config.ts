@@ -11,6 +11,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const baseURL = process.env.BASE_URL || "http://localhost:8000";
+const isCI = process.env.CI === "true";
 
 const tabletViewport = {
   width: 768,
@@ -29,15 +30,17 @@ const configs: BrowserConfig[] = [
     name: "chromium",
     type: chromium,
     options: {
-      headless: false,
-      slowMo: 1150,
-      recordVideo: {
-        dir: "./videos/",
-        size: {
-          width: 800,
-          height: 600,
-        },
-      },
+      headless: isCI,
+      slowMo: isCI ? 0 : 1150,
+      recordVideo: isCI
+        ? undefined
+        : {
+            dir: "./videos/",
+            size: {
+              width: 800,
+              height: 600,
+            },
+          },
       baseURL: baseURL,
     },
     viewport: tabletViewport,
@@ -46,13 +49,15 @@ const configs: BrowserConfig[] = [
     name: "firefox",
     type: firefox,
     options: {
-      headless: false,
-      slowMo: 50,
-      video: "on",
-      videoSize: {
-        width: 1280,
-        height: 720,
-      },
+      headless: isCI,
+      slowMo: isCI ? 0 : 50,
+      video: isCI ? undefined : "on",
+      videoSize: isCI
+        ? undefined
+        : {
+            width: 1280,
+            height: 720,
+          },
       baseURL: baseURL,
     },
     viewport: {
@@ -64,13 +69,15 @@ const configs: BrowserConfig[] = [
     name: "webkit",
     type: webkit,
     options: {
-      headless: false,
-      slowMo: 50,
-      video: "on",
-      videoSize: {
-        width: 1280,
-        height: 720,
-      },
+      headless: isCI,
+      slowMo: isCI ? 0 : 50,
+      video: isCI ? undefined : "on",
+      videoSize: isCI
+        ? undefined
+        : {
+            width: 1280,
+            height: 720,
+          },
       baseURL: baseURL,
     },
     viewport: {
