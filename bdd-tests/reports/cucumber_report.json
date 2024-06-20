@@ -1,0 +1,235 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "website-navigation;verify-the-navigation-to-projects-section",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Verify the navigation to Projects section",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 108341299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I view the homepage",
+            "match": {
+              "location": "step-definitions\\homepage.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1897519000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I click \"Projects\"",
+            "match": {
+              "location": "step-definitions\\homepage.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2400733999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "I should see the \"Projects\" page",
+            "match": {
+              "location": "step-definitions\\homepage.ts:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1679500
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 86100
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 97806099
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "website-navigation;verify-the-navigation-to-about-section",
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "Verify the navigation to About section",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 71060799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 9,
+            "name": "I view the homepage",
+            "match": {
+              "location": "step-definitions\\homepage.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1871794500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "I click \"About\"",
+            "match": {
+              "location": "step-definitions\\homepage.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2373559100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "I should see the \"About\" page",
+            "match": {
+              "location": "step-definitions\\homepage.ts:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1727700
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 41599
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 94392000
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "website-navigation;verify-the-navigation-to-contact-section",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "Verify the navigation to Contact section",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 66423099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I view the homepage",
+            "match": {
+              "location": "step-definitions\\homepage.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1906670200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "I click \"Contact\"",
+            "match": {
+              "location": "step-definitions\\homepage.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2381235399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "I should see the \"Contact\" page",
+            "match": {
+              "location": "step-definitions\\homepage.ts:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2268099
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 48799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 99573100
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "website-navigation",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Website Navigation",
+    "tags": [],
+    "uri": "features\\HomepageNavigation.feature"
+  }
+]

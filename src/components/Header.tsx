@@ -69,6 +69,7 @@ const Header = () => {
             to="/"
             onClick={() => handleNavClick("Home")}
             className="block md:inline-block px-4 py-2 md:p-0 hover:text-pink-500 transition-colors duration-200"
+            data-testid="nav-home"
           >
             Home
           </Link>
@@ -76,6 +77,7 @@ const Header = () => {
             to="/about"
             onClick={() => handleNavClick("About")}
             className="block md:inline-block px-4 py-2 md:p-0 hover:text-pink-500 transition-colors duration-200"
+            data-testid="nav-about"
           >
             About
           </Link>
@@ -83,6 +85,7 @@ const Header = () => {
             to="/projects"
             onClick={() => handleNavClick("Projects")}
             className="block md:inline-block px-4 py-2 md:p-0 hover:text-pink-500 transition-colors duration-200"
+            data-testid="nav-projects"
           >
             Projects
           </Link>
@@ -90,6 +93,7 @@ const Header = () => {
             to="/contact"
             onClick={() => handleNavClick("Contact")}
             className="block md:inline-block px-4 py-2 md:p-0 hover:text-pink-500 transition-colors duration-200"
+            data-testid="nav-contact"
           >
             Contact
           </Link>

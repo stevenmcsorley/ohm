@@ -107,6 +107,16 @@ services:
       - backend
     entrypoint: ["tail", "-f", "/dev/null"]
 
+  bdd-tests:
+    build:
+      context: ./bdd-tests
+      dockerfile: Dockerfile.bdd
+    command: npm run test
+    volumes:
+      - ./bdd-tests:/bdd-tests
+    networks:
+      - backend
+
 networks:
   proxy:
     external: true

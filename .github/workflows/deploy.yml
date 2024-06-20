@@ -21,8 +21,14 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Run Tests
+      - name: Run Unit Tests
         run: npm test
+
+      - name: Install Playwright Dependencies
+        run: npm install --save-dev @playwright/test @cucumber/cucumber
+
+      - name: Run BDD Tests
+        run: npm run test --prefix bdd-tests
 
   build:
     runs-on: ubuntu-latest

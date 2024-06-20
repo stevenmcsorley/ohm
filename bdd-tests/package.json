@@ -1,0 +1,27 @@
+{
+  "name": "bdd-pw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js features/**/*.feature --require-module ts-node/register --require test.setup.ts --require step-definitions/**/*.ts -f @cucumber/pretty-formatter -f json:reports/cucumber_report.json",
+    "generate-report": "node generate-report.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^9.1.0",
+    "@playwright/test": "^1.32.1",
+    "@types/node": "^18.15.11",
+    "cucumber-pretty": "^6.0.1",
+    "playwright": "^1.32.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.3"
+  },
+  "dependencies": {
+    "@cucumber/pretty-formatter": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "multiple-cucumber-html-reporter": "^3.3.0"
+  }
+}
