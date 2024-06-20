@@ -1,6 +1,6 @@
 import { describe, it } from "vitest";
 import { render, screen } from "@testing-library/react";
-import ProfileCard from "./ProfileCard";
+import ProfileCard from "../components/ProfileCard";
 
 describe("ProfileCard", () => {
   const props = {
