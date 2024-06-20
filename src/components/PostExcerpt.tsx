@@ -25,7 +25,7 @@ const PostExcerpt: React.FC<PostExcerptProps> = ({
     <div
       className={`flex flex-col post-excerpt bg-black shadow-md rounded-md ${className}`}
     >
-      <Link to={`/blog/${slug}`}>
+      <Link to={`/blog/${slug}`} data-testid="post-link">
         <img
           src={`/imgs/${id}.webp`}
           alt={title}
