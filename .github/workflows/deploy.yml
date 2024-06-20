@@ -9,7 +9,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      CI: true # Add this line to set the CI environment variable
+      CI: true
 
     steps:
       - name: Checkout Code
@@ -25,6 +25,14 @@ jobs:
 
       - name: Install BDD Test Dependencies
         run: npm ci --prefix bdd-tests
+
+      - name: Start Application Server
+        run: npm run start &
+        env:
+          PORT: 8000
+
+      - name: Wait for Application Server to be up
+        run: npx wait-on http://localhost:8000
 
       - name: Run Unit Tests
         run: npm test
