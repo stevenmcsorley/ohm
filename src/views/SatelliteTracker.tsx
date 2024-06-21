@@ -48,9 +48,7 @@ const SatelliteTracker: React.FC = () => {
   const ws = useRef<WebSocket | null>(null);
 
   const connectWebSocket = () => {
-    const socket = new WebSocket(
-      `wss://websocket.stevenmcsorley.co.uk:8080/ws`
-    );
+    const socket = new WebSocket(`wss://websocket.stevenmcsorley.co.uk/ws`);
 
     socket.addEventListener("open", () => {
       console.log("Connected to WS Server");
