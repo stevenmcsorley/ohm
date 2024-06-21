@@ -99,7 +99,7 @@ services:
       - kafka
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.websocket.rule=Host(`websocket.stevenmcsorley.co.uk`)"
+      - "traefik.http.routers.websocket.rule=Host(`backend.stevenmcsorley.co.uk`)"
       - "traefik.http.routers.websocket.entrypoints=web"
       - "traefik.http.routers.websocket-secure.entrypoints=websecure"
       - "traefik.http.routers.websocket-secure.tls=true"
