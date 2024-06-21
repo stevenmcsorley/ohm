@@ -6,7 +6,7 @@ import logging
 from datetime import datetime, timedelta
 
 # Configure logging
-# logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO)
 
 # Constants
 API_KEY = 'EP8BLZ-YCNL8Q-PNS2FR-51BF'  # Replace with your actual API key
@@ -43,9 +43,9 @@ while not producer:
     try:
         producer = KafkaProducer(bootstrap_servers='kafka:9092',
                                  value_serializer=lambda v: json.dumps(v).encode('utf-8'))
-        # logging.info("Kafka producer connected successfully.")
+        logging.info("Kafka producer connected successfully.")
     except errors.NoBrokersAvailable:
-        # logging.error("No Kafka brokers available, retrying in 5 seconds...")
+        logging.error("No Kafka brokers available, retrying in 5 seconds...")
         time.sleep(5)
 
 # Produce data to Kafka
@@ -54,7 +54,7 @@ while True:
         current_batch = SATELLITE_NORAD_IDS[i:i + REQUESTS_PER_ROUND]
         for satid in current_batch:
             satellite_data = fetch_satellite_data(satid)
-            # logging.info("Fetched satellite data: %s", satellite_data)
+            logging.info("Fetched satellite data: %s", satellite_data)
             producer.send(TOPIC, satellite_data)
-            # logging.info("Data sent to Kafka topic '%s'.", TOPIC)
+            logging.info("Data sent to Kafka topic '%s'.", TOPIC)
         time.sleep(INTERVAL_BETWEEN_ROUNDS)
