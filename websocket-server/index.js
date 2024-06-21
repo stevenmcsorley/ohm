@@ -82,7 +82,7 @@ const run = async () => {
 
 run().catch(console.error);
 
-server.listen(8081, () => {
+server.listen(8080, () => {
   console.log("WebSocket server started on port 8081");
 });
 
