@@ -95,6 +95,11 @@ services:
   websocket-server:
     build:
       context: ./websocket-server
+    ports:
+      - "8081:8081"
+    networks:
+      - proxy
+      - backend
     depends_on:
       - kafka
     labels:
@@ -104,10 +109,22 @@ services:
       - "traefik.http.routers.websocket-secure.entrypoints=websecure"
       - "traefik.http.routers.websocket-secure.tls=true"
       - "traefik.http.services.websocket.loadbalancer.server.port=8081"
-    ports:
-      - "8081:8081"
-    networks:
-      - backend
+
+    # backend-server:
+  #   build:
+  #     context: ./backend
+  #   ports:
+  #     - "8081:8080"
+  #   networks:
+  #     - proxy
+  #     - backend
+  #   labels:
+  #     - "traefik.enable=true"
+  #     - "traefik.http.routers.backend.rule=Host(`${BACKEND_HOST}`)"
+  #     - "traefik.http.routers.backend.entrypoints=web"
+  #     - "traefik.http.routers.backend-secure.entrypoints=websecure"
+  #     - "traefik.http.routers.backend-secure.tls=true"
+  #     - "traefik.http.services.backend.loadbalancer.server.port=8080"
 
 networks:
   proxy:
