@@ -96,7 +96,7 @@ services:
     build:
       context: ./websocket-server
     ports:
-      - "8081:8080" # Mapping internal port 8080 to external port 8081
+      - "8080:8080"
     networks:
       - proxy
       - backend
@@ -105,9 +105,11 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.websocket.rule=Host(`backend.stevenmcsorley.co.uk`)"
-      - "traefik.http.routers.websocket.entrypoints=websecure"
+      - "traefik.http.routers.websocket.entrypoints=web"
+      - "traefik.http.routers.websocket-secure.entrypoints=websecure"
       - "traefik.http.routers.websocket-secure.tls=true"
-      - "traefik.http.services.websocket.loadbalancer.server.port=8080" # Internal port 8080
+      - "traefik.http.services.websocket.loadbalancer.server.port=8080"
+
 networks:
   proxy:
     external: true

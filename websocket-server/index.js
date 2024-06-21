@@ -12,6 +12,10 @@ const wss = new WebSocket.Server({ noServer: true, path: "/ws" });
 const kafka = new Kafka({
   clientId: "backend",
   brokers: ["kafka:9092"],
+  retry: {
+    initialRetryTime: 300,
+    retries: 10,
+  },
 });
 
 const consumer = kafka.consumer({ groupId: "websocket-group" });
@@ -105,11 +109,12 @@ server.listen(8080, () => {
 
 const shutdown = () => {
   console.log("Shutting down server...");
-  consumer.disconnect();
-  server.close(() => {
-    console.log("Server shut down.");
+  consumer.disconnect().then(() => {
+    server.close(() => {
+      console.log("Server shut down.");
+      process.exit(0);
+    });
   });
-  process.exit(0);
 };
 
 process.on("SIGINT", shutdown);
