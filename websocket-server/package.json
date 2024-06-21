@@ -1,0 +1,20 @@
+{
+  "name": "websocker-server",
+  "version": "1.0.0",
+  "description": "websocket server",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "kafkajs": "^2.2.4",
+    "prom-client": "^15.1.2",
+    "redis": "^4.0.0",
+    "ws": "^8.0.0"
+  }
+}

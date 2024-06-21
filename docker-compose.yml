@@ -46,16 +46,6 @@ services:
 
   kafka:
     image: bitnami/kafka:latest
-    healthcheck:
-      test:
-        [
-          "CMD",
-          "kafka-broker-api-versions",
-          "--bootstrap-server=localhost:9092",
-        ]
-      interval: 30s
-      timeout: 10s
-      retries: 5
     environment:
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
       - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
@@ -63,6 +53,13 @@ services:
       - backend
     depends_on:
       - zookeeper
+    volumes:
+      - ./kafka-health-check.sh:/kafka-health-check.sh
+    healthcheck:
+      test: ["CMD", "/kafka-health-check.sh"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
 
   zookeeper:
     image: bitnami/zookeeper:latest
@@ -71,49 +68,73 @@ services:
     networks:
       - backend
 
-  backend:
+  # backend:
+  #   build:
+  #     context: ./backend
+  #   ports:
+  #     - "8081:8080"
+  #   networks:
+  #     - backend
+  #   depends_on:
+  #     - kafka
+  #   labels:
+  #     - "traefik.enable=true"
+  #     - "traefik.http.routers.backend.rule=Host(`${BACKEND_HOST}`)"
+  #     - "traefik.http.routers.backend.entrypoints=web"
+  #     - "traefik.http.routers.backend-secure.entrypoints=websecure"
+  #     - "traefik.http.routers.backend-secure.tls=true"
+  #     - "traefik.http.services.backend.loadbalancer.server.port=8080"
+  #     # - "traefik.enable=true"
+  #     # - "traefik.http.routers.backend.rule=Host(`backend.${WEB_HOST}`)"
+  #     # - "traefik.http.routers.backend.entrypoints=websecure"
+  #     # - "traefik.http.routers.backend.tls=true"
+  #     # - "traefik.http.services.backend.loadbalancer.server.port=8080"
+
+  # data-simulator:
+  #   build:
+  #     context: ./data-simulator
+  #   depends_on:
+  #     - kafka
+  #   networks:
+  #     - backend
+
+  # kafka-tools:
+  #   image: bitnami/kafka:latest
+  #   networks:
+  #     - backend
+  #   entrypoint: ["tail", "-f", "/dev/null"]
+
+  # bdd-tests:
+  #   build:
+  #     context: ./bdd-tests
+  #     dockerfile: Dockerfile.bdd
+  #   command: npm run test
+  #   volumes:
+  #     - ./bdd-tests:/bdd-tests
+  #   networks:
+  #     - backend
+  satellite-producer:
     build:
-      context: ./backend
-    ports:
-      - "8081:8080"
+      context: ./satellite-producer
+    depends_on:
+      - kafka
     networks:
       - backend
+
+  websocket-server:
+    build:
+      context: ./websocket-server
     depends_on:
       - kafka
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=Host(`${BACKEND_HOST}`)"
-      - "traefik.http.routers.backend.entrypoints=web"
-      - "traefik.http.routers.backend-secure.entrypoints=websecure"
-      - "traefik.http.routers.backend-secure.tls=true"
-      - "traefik.http.services.backend.loadbalancer.server.port=8080"
-      # - "traefik.enable=true"
-      # - "traefik.http.routers.backend.rule=Host(`backend.${WEB_HOST}`)"
-      # - "traefik.http.routers.backend.entrypoints=websecure"
-      # - "traefik.http.routers.backend.tls=true"
-      # - "traefik.http.services.backend.loadbalancer.server.port=8080"
-
-  data-simulator:
-    build:
-      context: ./data-simulator
-    depends_on:
-      - kafka
-    networks:
-      - backend
-
-  kafka-tools:
-    image: bitnami/kafka:latest
-    networks:
-      - backend
-    entrypoint: ["tail", "-f", "/dev/null"]
-
-  bdd-tests:
-    build:
-      context: ./bdd-tests
-      dockerfile: Dockerfile.bdd
-    command: npm run test
-    volumes:
-      - ./bdd-tests:/bdd-tests
+      - "traefik.http.routers.websocket.rule=Host(`websocket.localhost`)"
+      - "traefik.http.routers.websocket.entrypoints=web"
+      - "traefik.http.routers.websocket-secure.entrypoints=websecure"
+      - "traefik.http.routers.websocket-secure.tls=true"
+      - "traefik.http.services.websocket.loadbalancer.server.port=8080"
+    ports:
+      - "8080:8080"
     networks:
       - backend
 

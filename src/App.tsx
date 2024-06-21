@@ -11,6 +11,7 @@ import Contact from "./views/Contact";
 import PrivacyPolicy from "./views/PrivacyPolicy";
 import TermsOfService from "./views/TermsOfService";
 import RealTimeDataDisplay from "./views/RealTime";
+import SatelliteTracker from "./views/SatelliteTracker";
 
 import initializeAnalytics from "./analytics";
 import usePageTracking from "./hooks/usePageTracking";
@@ -30,6 +31,7 @@ const AppRoutes = () => {
       <Route path="/terms-of-service" element={<TermsOfService />} />
       <Route path="/blog/:slug" element={<BlogPost />} />
       <Route path="/real-time" element={<RealTimeDataDisplay />} />
+      <Route path="/satellite-tracker" element={<SatelliteTracker />} />
     </Routes>
   );
 };

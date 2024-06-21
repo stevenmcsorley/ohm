@@ -1,12 +1,12 @@
 import express from "express";
 import { createServer } from "http";
-import { Server, OPEN } from "ws";
+import { WebSocketServer, WebSocket } from "ws";
 import { Kafka } from "kafkajs";
 import { Registry, collectDefaultMetrics, Counter } from "prom-client";
 
 const app = express();
 const server = createServer(app);
-const wss = new Server({ noServer: true, path: "/ws" });
+const wss = new WebSocketServer({ noServer: true, path: "/ws" });
 
 // Kafka client setup
 const kafka = new Kafka({
@@ -58,16 +58,17 @@ const run = async () => {
   try {
     await consumer.connect();
     console.log("Kafka consumer connected.");
-    await consumer.subscribe({ topic: "device-updates", fromBeginning: true });
-    console.log("Kafka consumer subscribed to topic: device-updates.");
+    await consumer.subscribe({
+      topic: "satellite-positions",
+      fromBeginning: true,
+    });
+    console.log("Kafka consumer subscribed to topic: satellite-positions.");
 
     await consumer.run({
       eachMessage: async ({ topic, partition, message }) => {
         const data = message.value.toString();
-        // console.log(`Received message: ${data}`);
         wss.clients.forEach((client) => {
-          if (client.readyState === OPEN) {
-            // console.log(`Sending data to WebSocket client: ${data}`);
+          if (client.readyState === WebSocket.OPEN) {
             client.send(data);
           }
         });
@@ -75,6 +76,7 @@ const run = async () => {
     });
   } catch (error) {
     console.error("Error in Kafka consumer:", error);
+    setTimeout(run, 5000); // Retry after 5 seconds
   }
 };
 
