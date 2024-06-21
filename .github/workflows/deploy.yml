@@ -64,52 +64,52 @@ jobs:
           push: true
           tags: stevenmcsorley72/ohm-web:latest
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
+deploy:
+  runs-on: ubuntu-latest
+  needs: build
 
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+  steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
 
-      - name: Deploy to VPS
-        uses: appleboy/ssh-action@v0.1.5
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          port: ${{ secrets.VPS_PORT }}
-          script: |
-            echo "Navigating to project directory..."
-            cd ${{ secrets.VPS_PATH }}
+    - name: Deploy to VPS
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USER }}
+        key: ${{ secrets.VPS_SSH_KEY }}
+        port: ${{ secrets.VPS_PORT }}
+        script: |
+          echo "Navigating to project directory..."
+          cd ${{ secrets.VPS_PATH }}
 
-            echo "Backing up .env file..."
-            cp .env .env.backup
+          echo "Backing up .env file..."
+          cp .env .env.backup
 
-            echo "Stashing local changes..."
-            git stash
+          echo "Stashing local changes..."
+          git stash
 
-            echo "Pulling latest changes from Git..."
-            git pull origin main || (git stash pop && exit 1)
+          echo "Fetching the latest changes from GitHub..."
+          git fetch origin main
 
-            echo "Applying stashed changes..."
-            git stash pop
+          echo "Resetting working directory to latest commit..."
+          git reset --hard origin/main
 
-            echo "Restoring .env file..."
-            mv .env.backup .env
+          echo "Restoring .env file..."
+          mv .env.backup .env
 
-            echo "Pulling the latest Docker images..."
-            docker-compose pull
+          echo "Pulling the latest Docker images..."
+          docker-compose pull
 
-            echo "Rebuilding and restarting Docker containers..."
-            docker-compose down
-            docker-compose up --build -d --remove-orphans
+          echo "Rebuilding and restarting Docker containers..."
+          docker-compose down --remove-orphans
+          docker-compose up --build -d --remove-orphans
 
-            echo "Displaying running Docker containers..."
-            docker ps
-            echo "Inspecting Docker container..."
-            docker inspect $(docker ps -q)
+          echo "Displaying running Docker containers..."
+          docker ps
+          echo "Inspecting Docker container..."
+          docker inspect $(docker ps -q)
 
-            echo "Cleaning up Docker system..."
-            docker system prune -f
-            docker image prune -f
+          echo "Cleaning up Docker system..."
+          docker system prune -f
+          docker image prune -f
