@@ -68,36 +68,6 @@ services:
     networks:
       - backend
 
-  # backend:
-  #   build:
-  #     context: ./backend
-  #   ports:
-  #     - "8081:8080"
-  #   networks:
-  #     - backend
-  #   depends_on:
-  #     - kafka
-  #   labels:
-  #     - "traefik.enable=true"
-  #     - "traefik.http.routers.backend.rule=Host(`${BACKEND_HOST}`)"
-  #     - "traefik.http.routers.backend.entrypoints=web"
-  #     - "traefik.http.routers.backend-secure.entrypoints=websecure"
-  #     - "traefik.http.routers.backend-secure.tls=true"
-  #     - "traefik.http.services.backend.loadbalancer.server.port=8080"
-  #     # - "traefik.enable=true"
-  #     # - "traefik.http.routers.backend.rule=Host(`backend.${WEB_HOST}`)"
-  #     # - "traefik.http.routers.backend.entrypoints=websecure"
-  #     # - "traefik.http.routers.backend.tls=true"
-  #     # - "traefik.http.services.backend.loadbalancer.server.port=8080"
-
-  # data-simulator:
-  #   build:
-  #     context: ./data-simulator
-  #   depends_on:
-  #     - kafka
-  #   networks:
-  #     - backend
-
   # kafka-tools:
   #   image: bitnami/kafka:latest
   #   networks:
