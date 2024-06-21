@@ -96,7 +96,7 @@ services:
     build:
       context: ./websocket-server
     ports:
-      - "8080:8080"
+      - "8082:8080" # Change external port to 8082
     networks:
       - proxy
       - backend
