@@ -49,7 +49,7 @@ const SatelliteTracker: React.FC = () => {
 
   const connectWebSocket = () => {
     const socket = new WebSocket(
-      `wss://websocket.stevenmcsorley.co.uk:8080/ws`
+      `wss://websocket.stevenmcsorley.co.uk:8081/ws`
     );
 
     socket.addEventListener("open", () => {
