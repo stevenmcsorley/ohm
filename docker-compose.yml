@@ -36,6 +36,7 @@ services:
       - "traefik.http.routers.web.rule=Host(`${WEB_HOST}`)"
       - "traefik.http.routers.web.entrypoints=web"
       - "traefik.http.routers.web-secure.entrypoints=websecure"
+      - "traefik.http.routers.web-secure.tls=true"
       - "traefik.http.services.web.loadbalancer.server.port=8000"
     networks:
       - proxy
@@ -106,7 +107,6 @@ services:
     ports:
       - "8080:8080"
     networks:
-      - backend
       - backend
 
 networks:
