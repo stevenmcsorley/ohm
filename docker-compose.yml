@@ -8,7 +8,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "8087:8080"
+      - "8080:8080"
     command:
       - --api.insecure=false
       - --api.dashboard=false
@@ -103,9 +103,9 @@ services:
       - "traefik.http.routers.websocket.entrypoints=web"
       - "traefik.http.routers.websocket-secure.entrypoints=websecure"
       - "traefik.http.routers.websocket-secure.tls=true"
-      - "traefik.http.services.websocket.loadbalancer.server.port=8080"
+      - "traefik.http.services.websocket.loadbalancer.server.port=8081"
     ports:
-      - "8080:8080"
+      - "8081:8081"
     networks:
       - backend
 
