@@ -103,7 +103,7 @@ jobs:
 
             echo "Rebuilding and restarting Docker containers..."
             docker-compose down
-            docker-compose up --build -d
+            docker-compose up --build -d --remove-orphans
 
             echo "Displaying running Docker containers..."
             docker ps
