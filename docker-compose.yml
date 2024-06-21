@@ -95,7 +95,7 @@ services:
     build:
       context: ./websocket-server
     ports:
-      - "8081:8080" # Map internal 8080 to external 8081
+      - "8080" # Map internal 8080 to external 8081
     networks:
       - proxy
       - backend
